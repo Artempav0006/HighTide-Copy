@@ -18,13 +18,13 @@
 // /___/  \  /    Vendor : Xilinx
 // \   \   \/     Version : 2017.1
 //  \   \         Description : Xilinx Unified Simulation Library Component
-//  /   /                  D Flip-Flop with Clock Enable and Asynchronous Clear
-// /___/   /\     Filename : FDCE.v
+//  /   /                  D Flip-Flop with Clock Enable and Asynchronous Preset
+// /___/   /\     Filename : FDPE.v
 // \   \  /  \
 //  \___\/\___\
 //
 // Revision:
-//    08/24/10 - Initial version.
+//    08/25/10 - Initial version.
 //    10/20/10 - remove unused pin line from table.
 //    11/01/11 - Disable timing check when set reset active (CR632017)
 //    12/08/11 - add MSGON and XON attributes (CR636891)
@@ -34,21 +34,24 @@
 // End Revision
 ///////////////////////////////////////////////////////////////////////////////
 
-module FDCE (
-    input wire D,
-    input wire CE,
-    input wire C,
-    input wire CLR,
-    output reg Q
+module FDPE #(
+    parameter INIT = 1'b1
+)(
+    input  wire C,      // Clock
+    input  wire PRE,    // Asynchronous preset (active high)
+    input  wire CE,     // Clock enable
+    input  wire D,      // Data input
+    output reg  Q       // Output
 );
 
-always @(posedge C or posedge CLR) begin
-    if (CLR) begin
-        Q <= 1'b0;           // Asynchronous clear
-    end else if (CE) begin
-        Q <= D;              // Clock enable active, load D
+    // Initialize Q to INIT
+    initial Q = INIT;
+
+    always @(posedge C or posedge PRE) begin
+        if (PRE)
+            Q <= 1'b1;
+        else if (CE)
+            Q <= D;             // Clocked assignment when CE is high
     end
-    // When CE=0 and CLR=0: Q retains previous value (no else clause)
-end
 
 endmodule
