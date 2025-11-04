@@ -1,16 +1,8 @@
-<<<<<<<< HEAD:designs/nangate45/NyuziProcessor/sram/lib/fakeram_20x64_2r1w.lib
-library(fakeram_20x64_2r1w) {
-    technology (cmos);
-    delay_model : table_lookup;
-    revision : 1.0;
-    date : "2025-10-10 17:45:39Z";
-========
 library(fakeram_1rw1r_32w384d_8wm_sram) {
     technology (cmos);
     delay_model : table_lookup;
     revision : 1.0;
     date : "2025-09-08 04:06:38Z";
->>>>>>>> a290b7a (finished liteeth in 7,45,130 with new fakeram macros):designs/asap7/liteeth/sram/lib/fakeram_1rw1r_32w384d_8wm_sram.lib
     comment : "SRAM";
     time_unit : "1ns";
     voltage_unit : "1V";
@@ -54,84 +46,47 @@ library(fakeram_1rw1r_32w384d_8wm_sram) {
     output_threshold_pct_rise : 50.000;
 
 
-<<<<<<<< HEAD:designs/nangate45/NyuziProcessor/sram/lib/fakeram_20x64_2r1w.lib
-    lu_table_template(fakeram_20x64_2r1w_mem_out_delay_template) {
-========
     lu_table_template(fakeram_1rw1r_32w384d_8wm_sram_mem_out_delay_template) {
->>>>>>>> a290b7a (finished liteeth in 7,45,130 with new fakeram macros):designs/asap7/liteeth/sram/lib/fakeram_1rw1r_32w384d_8wm_sram.lib
         variable_1 : input_net_transition;
         variable_2 : total_output_net_capacitance;
             index_1 ("1000, 1001");
             index_2 ("1000, 1001");
     }
-<<<<<<<< HEAD:designs/nangate45/NyuziProcessor/sram/lib/fakeram_20x64_2r1w.lib
-    lu_table_template(fakeram_20x64_2r1w_mem_out_slew_template) {
-        variable_1 : total_output_net_capacitance;
-            index_1 ("1000, 1001");
-    }
-    lu_table_template(fakeram_20x64_2r1w_constraint_template) {
-========
     lu_table_template(fakeram_1rw1r_32w384d_8wm_sram_mem_out_slew_template) {
         variable_1 : total_output_net_capacitance;
             index_1 ("1000, 1001");
     }
     lu_table_template(fakeram_1rw1r_32w384d_8wm_sram_constraint_template) {
->>>>>>>> a290b7a (finished liteeth in 7,45,130 with new fakeram macros):designs/asap7/liteeth/sram/lib/fakeram_1rw1r_32w384d_8wm_sram.lib
         variable_1 : related_pin_transition;
         variable_2 : constrained_pin_transition;
             index_1 ("1000, 1001");
             index_2 ("1000, 1001");
     }
-<<<<<<<< HEAD:designs/nangate45/NyuziProcessor/sram/lib/fakeram_20x64_2r1w.lib
-    power_lut_template(fakeram_20x64_2r1w_energy_template_clkslew) {
-        variable_1 : input_transition_time;
-            index_1 ("1000, 1001");
-    }
-    power_lut_template(fakeram_20x64_2r1w_energy_template_sigslew) {
-========
     power_lut_template(fakeram_1rw1r_32w384d_8wm_sram_energy_template_clkslew) {
         variable_1 : input_transition_time;
             index_1 ("1000, 1001");
     }
     power_lut_template(fakeram_1rw1r_32w384d_8wm_sram_energy_template_sigslew) {
->>>>>>>> a290b7a (finished liteeth in 7,45,130 with new fakeram macros):designs/asap7/liteeth/sram/lib/fakeram_1rw1r_32w384d_8wm_sram.lib
         variable_1 : input_transition_time;
             index_1 ("1000, 1001");
     }
     library_features(report_delay_calculation);
-<<<<<<<< HEAD:designs/nangate45/NyuziProcessor/sram/lib/fakeram_20x64_2r1w.lib
-    type (fakeram_20x64_2r1w_DATA) {
-========
     type (fakeram_1rw1r_32w384d_8wm_sram_DATA) {
->>>>>>>> a290b7a (finished liteeth in 7,45,130 with new fakeram macros):designs/asap7/liteeth/sram/lib/fakeram_1rw1r_32w384d_8wm_sram.lib
         base_type : array ;
         data_type : bit ;
-        bit_width : 20;
-        bit_from : 19;
+        bit_width : 32;
+        bit_from : 31;
         bit_to : 0 ;
         downto : true ;
     }
-<<<<<<<< HEAD:designs/nangate45/NyuziProcessor/sram/lib/fakeram_20x64_2r1w.lib
-    type (fakeram_20x64_2r1w_ADDRESS) {
-========
     type (fakeram_1rw1r_32w384d_8wm_sram_ADDRESS) {
->>>>>>>> a290b7a (finished liteeth in 7,45,130 with new fakeram macros):designs/asap7/liteeth/sram/lib/fakeram_1rw1r_32w384d_8wm_sram.lib
         base_type : array ;
         data_type : bit ;
-        bit_width : 6;
-        bit_from : 5;
+        bit_width : 9;
+        bit_from : 8;
         bit_to : 0 ;
         downto : true ;
     }
-<<<<<<<< HEAD:designs/nangate45/NyuziProcessor/sram/lib/fakeram_20x64_2r1w.lib
-cell(fakeram_20x64_2r1w) {
-    area : 13304.256;
-    interface_timing : true;
-    memory() {
-        type : ram;
-        address_width : 6;
-        word_width : 20;
-========
    cell(fakeram_1rw1r_32w384d_8wm_sram) {
        area : 1026.821;
        interface_timing : true;
@@ -139,23 +94,11 @@ cell(fakeram_20x64_2r1w) {
            type : ram;
            address_width : 9;
            word_width : 32;
->>>>>>>> a290b7a (finished liteeth in 7,45,130 with new fakeram macros):designs/asap7/liteeth/sram/lib/fakeram_1rw1r_32w384d_8wm_sram.lib
     }
     pin(r0_clk)   {
         direction : input;
         capacitance : 0.025;
         clock : true;
-<<<<<<<< HEAD:designs/nangate45/NyuziProcessor/sram/lib/fakeram_20x64_2r1w.lib
-        min_period           : 0.194 ;
-        internal_power(){
-            rise_power(fakeram_20x64_2r1w_energy_template_clkslew) {
-                index_1 ("0.009, 0.227");
-                values ("1.922, 1.922")
-            }
-            fall_power(fakeram_20x64_2r1w_energy_template_clkslew) {
-                index_1 ("0.009, 0.227");
-                values ("1.922, 1.922")
-========
         min_period           : 0.257 ;
         internal_power(){
             rise_power(fakeram_1rw1r_32w384d_8wm_sram_energy_template_clkslew) {
@@ -165,26 +108,10 @@ cell(fakeram_20x64_2r1w) {
             fall_power(fakeram_1rw1r_32w384d_8wm_sram_energy_template_clkslew) {
                 index_1 ("0.009, 0.227");
                 values ("1.345, 1.345")
->>>>>>>> a290b7a (finished liteeth in 7,45,130 with new fakeram macros):designs/asap7/liteeth/sram/lib/fakeram_1rw1r_32w384d_8wm_sram.lib
             }
         }
     }
 
-<<<<<<<< HEAD:designs/nangate45/NyuziProcessor/sram/lib/fakeram_20x64_2r1w.lib
-    pin(r1_clk)   {
-        direction : input;
-        capacitance : 0.025;
-        clock : true;
-        min_period           : 0.194 ;
-        internal_power(){
-            rise_power(fakeram_20x64_2r1w_energy_template_clkslew) {
-                index_1 ("0.009, 0.227");
-                values ("1.922, 1.922")
-            }
-            fall_power(fakeram_20x64_2r1w_energy_template_clkslew) {
-                index_1 ("0.009, 0.227");
-                values ("1.922, 1.922")
-========
     bus(r0_rd_out)   {
         bus_type : fakeram_1rw1r_32w384d_8wm_sram_DATA;
         direction : output;
@@ -344,62 +271,10 @@ cell(fakeram_20x64_2r1w) {
             fall_power(fakeram_1rw1r_32w384d_8wm_sram_energy_template_clkslew) {
                 index_1 ("0.009, 0.227");
                 values ("1.345, 1.345")
->>>>>>>> a290b7a (finished liteeth in 7,45,130 with new fakeram macros):designs/asap7/liteeth/sram/lib/fakeram_1rw1r_32w384d_8wm_sram.lib
             }
         }
     }
 
-<<<<<<<< HEAD:designs/nangate45/NyuziProcessor/sram/lib/fakeram_20x64_2r1w.lib
-    pin(w0_clk)   {
-        direction : input;
-        capacitance : 0.025;
-        clock : true;
-        min_period           : 0.194 ;
-        internal_power(){
-            rise_power(fakeram_20x64_2r1w_energy_template_clkslew) {
-                index_1 ("0.009, 0.227");
-                values ("1.922, 1.922")
-            }
-            fall_power(fakeram_20x64_2r1w_energy_template_clkslew) {
-                index_1 ("0.009, 0.227");
-                values ("1.922, 1.922")
-            }
-        }
-    }
-
-    bus(r0_rd_out)   {
-        bus_type : fakeram_20x64_2r1w_DATA;
-        direction : output;
-        max_capacitance : 0.500;
-        memory_read() {
-            address : r0_addr_in;
-        }
-        timing() {
-            related_pin : "r0_clk" ;
-            timing_type : rising_edge;
-            timing_sense : non_unate;
-            cell_rise(fakeram_20x64_2r1w_mem_out_delay_template) {
-                index_1 ("0.009, 0.227");
-                index_2 ("0.005, 0.500");
-                values ( \
-                  "0.242, 0.242", \
-                  "0.242, 0.242" \
-                )
-            }
-            cell_fall(fakeram_20x64_2r1w_mem_out_delay_template) {
-                index_1 ("0.009, 0.227");
-                index_2 ("0.005, 0.500");
-                values ( \
-                  "0.242, 0.242", \
-                  "0.242, 0.242" \
-                )
-            }
-            rise_transition(fakeram_20x64_2r1w_mem_out_slew_template) {
-                index_1 ("0.005, 0.500");
-                values ("0.009, 0.227")
-            }
-            fall_transition(fakeram_20x64_2r1w_mem_out_slew_template) {
-========
     bus(rw0_rd_out)   {
         bus_type : fakeram_1rw1r_32w384d_8wm_sram_DATA;
         direction : output;
@@ -432,58 +307,11 @@ cell(fakeram_20x64_2r1w) {
                 values ("0.009, 0.227")
             }
             fall_transition(fakeram_1rw1r_32w384d_8wm_sram_mem_out_slew_template) {
->>>>>>>> a290b7a (finished liteeth in 7,45,130 with new fakeram macros):designs/asap7/liteeth/sram/lib/fakeram_1rw1r_32w384d_8wm_sram.lib
                 index_1 ("0.005, 0.500");
                 values ("0.009, 0.227")
             }
         }
     }
-<<<<<<<< HEAD:designs/nangate45/NyuziProcessor/sram/lib/fakeram_20x64_2r1w.lib
-    bus(r1_rd_out)   {
-        bus_type : fakeram_20x64_2r1w_DATA;
-        direction : output;
-        max_capacitance : 0.500;
-        memory_read() {
-            address : r1_addr_in;
-        }
-        timing() {
-            related_pin : "r1_clk" ;
-            timing_type : rising_edge;
-            timing_sense : non_unate;
-            cell_rise(fakeram_20x64_2r1w_mem_out_delay_template) {
-                index_1 ("0.009, 0.227");
-                index_2 ("0.005, 0.500");
-                values ( \
-                  "0.242, 0.242", \
-                  "0.242, 0.242" \
-                )
-            }
-            cell_fall(fakeram_20x64_2r1w_mem_out_delay_template) {
-                index_1 ("0.009, 0.227");
-                index_2 ("0.005, 0.500");
-                values ( \
-                  "0.242, 0.242", \
-                  "0.242, 0.242" \
-                )
-            }
-            rise_transition(fakeram_20x64_2r1w_mem_out_slew_template) {
-                index_1 ("0.005, 0.500");
-                values ("0.009, 0.227")
-            }
-            fall_transition(fakeram_20x64_2r1w_mem_out_slew_template) {
-                index_1 ("0.005, 0.500");
-                values ("0.009, 0.227")
-            }
-        }
-    }
-    pin(w0_we_in)   {
-        direction : input;
-        capacitance : 0.005;
-        timing() {
-            related_pin : w0_clk;
-            timing_type : setup_rising ;
-            rise_constraint(fakeram_20x64_2r1w_constraint_template) {
-========
     pin(rw0_we_in){
         direction : input;
         capacitance : 0.005;
@@ -491,7 +319,6 @@ cell(fakeram_20x64_2r1w) {
             related_pin : "rw0_clk";
             timing_type : setup_rising ;
             rise_constraint(fakeram_1rw1r_32w384d_8wm_sram_constraint_template) {
->>>>>>>> a290b7a (finished liteeth in 7,45,130 with new fakeram macros):designs/asap7/liteeth/sram/lib/fakeram_1rw1r_32w384d_8wm_sram.lib
                 index_1 ("0.009, 0.227");
                 index_2 ("0.009, 0.227");
                 values ( \
@@ -499,11 +326,7 @@ cell(fakeram_20x64_2r1w) {
                   "0.050, 0.050" \
                 )
             }
-<<<<<<<< HEAD:designs/nangate45/NyuziProcessor/sram/lib/fakeram_20x64_2r1w.lib
-            fall_constraint(fakeram_20x64_2r1w_constraint_template) {
-========
             fall_constraint(fakeram_1rw1r_32w384d_8wm_sram_constraint_template) {
->>>>>>>> a290b7a (finished liteeth in 7,45,130 with new fakeram macros):designs/asap7/liteeth/sram/lib/fakeram_1rw1r_32w384d_8wm_sram.lib
                 index_1 ("0.009, 0.227");
                 index_2 ("0.009, 0.227");
                 values ( \
@@ -513,15 +336,9 @@ cell(fakeram_20x64_2r1w) {
             }
         } 
         timing() {
-<<<<<<<< HEAD:designs/nangate45/NyuziProcessor/sram/lib/fakeram_20x64_2r1w.lib
-            related_pin : w0_clk;
-            timing_type : hold_rising ;
-            rise_constraint(fakeram_20x64_2r1w_constraint_template) {
-========
             related_pin : "rw0_clk";
             timing_type : hold_rising ;
             rise_constraint(fakeram_1rw1r_32w384d_8wm_sram_constraint_template) {
->>>>>>>> a290b7a (finished liteeth in 7,45,130 with new fakeram macros):designs/asap7/liteeth/sram/lib/fakeram_1rw1r_32w384d_8wm_sram.lib
                 index_1 ("0.009, 0.227");
                 index_2 ("0.009, 0.227");
                 values ( \
@@ -529,11 +346,7 @@ cell(fakeram_20x64_2r1w) {
                   "0.050, 0.050" \
                 )
             }
-<<<<<<<< HEAD:designs/nangate45/NyuziProcessor/sram/lib/fakeram_20x64_2r1w.lib
-            fall_constraint(fakeram_20x64_2r1w_constraint_template) {
-========
             fall_constraint(fakeram_1rw1r_32w384d_8wm_sram_constraint_template) {
->>>>>>>> a290b7a (finished liteeth in 7,45,130 with new fakeram macros):designs/asap7/liteeth/sram/lib/fakeram_1rw1r_32w384d_8wm_sram.lib
                 index_1 ("0.009, 0.227");
                 index_2 ("0.009, 0.227");
                 values ( \
@@ -543,185 +356,6 @@ cell(fakeram_20x64_2r1w) {
             }
         }
         internal_power(){
-<<<<<<<< HEAD:designs/nangate45/NyuziProcessor/sram/lib/fakeram_20x64_2r1w.lib
-            rise_power(fakeram_20x64_2r1w_energy_template_sigslew) {
-                index_1 ("0.009, 0.227");
-                values ("0.019, 0.019")
-            }
-            fall_power(fakeram_20x64_2r1w_energy_template_sigslew) {
-                index_1 ("0.009, 0.227");
-                values ("0.019, 0.019")
-            }
-        }
-    }
-    pin(r0_ce_in)   {
-        direction : input;
-        capacitance : 0.005;
-        timing() {
-            related_pin : r0_clk;
-            timing_type : setup_rising ;
-            rise_constraint(fakeram_20x64_2r1w_constraint_template) {
-                index_1 ("0.009, 0.227");
-                index_2 ("0.009, 0.227");
-                values ( \
-                  "0.050, 0.050", \
-                  "0.050, 0.050" \
-                )
-            }
-            fall_constraint(fakeram_20x64_2r1w_constraint_template) {
-                index_1 ("0.009, 0.227");
-                index_2 ("0.009, 0.227");
-                values ( \
-                  "0.050, 0.050", \
-                  "0.050, 0.050" \
-                )
-            }
-        } 
-        timing() {
-            related_pin : r0_clk;
-            timing_type : hold_rising ;
-            rise_constraint(fakeram_20x64_2r1w_constraint_template) {
-                index_1 ("0.009, 0.227");
-                index_2 ("0.009, 0.227");
-                values ( \
-                  "0.050, 0.050", \
-                  "0.050, 0.050" \
-                )
-            }
-            fall_constraint(fakeram_20x64_2r1w_constraint_template) {
-                index_1 ("0.009, 0.227");
-                index_2 ("0.009, 0.227");
-                values ( \
-                  "0.050, 0.050", \
-                  "0.050, 0.050" \
-                )
-            }
-        }
-        internal_power(){
-            rise_power(fakeram_20x64_2r1w_energy_template_sigslew) {
-                index_1 ("0.009, 0.227");
-                values ("0.019, 0.019")
-            }
-            fall_power(fakeram_20x64_2r1w_energy_template_sigslew) {
-                index_1 ("0.009, 0.227");
-                values ("0.019, 0.019")
-            }
-        }
-    }
-    pin(r1_ce_in)   {
-        direction : input;
-        capacitance : 0.005;
-        timing() {
-            related_pin : r1_clk;
-            timing_type : setup_rising ;
-            rise_constraint(fakeram_20x64_2r1w_constraint_template) {
-                index_1 ("0.009, 0.227");
-                index_2 ("0.009, 0.227");
-                values ( \
-                  "0.050, 0.050", \
-                  "0.050, 0.050" \
-                )
-            }
-            fall_constraint(fakeram_20x64_2r1w_constraint_template) {
-                index_1 ("0.009, 0.227");
-                index_2 ("0.009, 0.227");
-                values ( \
-                  "0.050, 0.050", \
-                  "0.050, 0.050" \
-                )
-            }
-        } 
-        timing() {
-            related_pin : r1_clk;
-            timing_type : hold_rising ;
-            rise_constraint(fakeram_20x64_2r1w_constraint_template) {
-                index_1 ("0.009, 0.227");
-                index_2 ("0.009, 0.227");
-                values ( \
-                  "0.050, 0.050", \
-                  "0.050, 0.050" \
-                )
-            }
-            fall_constraint(fakeram_20x64_2r1w_constraint_template) {
-                index_1 ("0.009, 0.227");
-                index_2 ("0.009, 0.227");
-                values ( \
-                  "0.050, 0.050", \
-                  "0.050, 0.050" \
-                )
-            }
-        }
-        internal_power(){
-            rise_power(fakeram_20x64_2r1w_energy_template_sigslew) {
-                index_1 ("0.009, 0.227");
-                values ("0.019, 0.019")
-            }
-            fall_power(fakeram_20x64_2r1w_energy_template_sigslew) {
-                index_1 ("0.009, 0.227");
-                values ("0.019, 0.019")
-            }
-        }
-    }
-    pin(w0_ce_in)   {
-        direction : input;
-        capacitance : 0.005;
-        timing() {
-            related_pin : w0_clk;
-            timing_type : setup_rising ;
-            rise_constraint(fakeram_20x64_2r1w_constraint_template) {
-                index_1 ("0.009, 0.227");
-                index_2 ("0.009, 0.227");
-                values ( \
-                  "0.050, 0.050", \
-                  "0.050, 0.050" \
-                )
-            }
-            fall_constraint(fakeram_20x64_2r1w_constraint_template) {
-                index_1 ("0.009, 0.227");
-                index_2 ("0.009, 0.227");
-                values ( \
-                  "0.050, 0.050", \
-                  "0.050, 0.050" \
-                )
-            }
-        } 
-        timing() {
-            related_pin : w0_clk;
-            timing_type : hold_rising ;
-            rise_constraint(fakeram_20x64_2r1w_constraint_template) {
-                index_1 ("0.009, 0.227");
-                index_2 ("0.009, 0.227");
-                values ( \
-                  "0.050, 0.050", \
-                  "0.050, 0.050" \
-                )
-            }
-            fall_constraint(fakeram_20x64_2r1w_constraint_template) {
-                index_1 ("0.009, 0.227");
-                index_2 ("0.009, 0.227");
-                values ( \
-                  "0.050, 0.050", \
-                  "0.050, 0.050" \
-                )
-            }
-        }
-        internal_power(){
-            rise_power(fakeram_20x64_2r1w_energy_template_sigslew) {
-                index_1 ("0.009, 0.227");
-                values ("0.019, 0.019")
-            }
-            fall_power(fakeram_20x64_2r1w_energy_template_sigslew) {
-                index_1 ("0.009, 0.227");
-                values ("0.019, 0.019")
-            }
-        }
-    }
-    bus(w0_wd_in)   {
-        bus_type : fakeram_20x64_2r1w_DATA;
-        memory_write() {
-            address : w0_addr_in;
-            clocked_on : "w0_clk";
-========
             rise_power(fakeram_1rw1r_32w384d_8wm_sram_energy_template_sigslew) {
                 index_1 ("0.009, 0.227");
                 values ("0.013, 0.013")
@@ -737,20 +371,13 @@ cell(fakeram_20x64_2r1w) {
         memory_write() {
             address : rw0_addr_in;
             clocked_on : "rw0_clk";
->>>>>>>> a290b7a (finished liteeth in 7,45,130 with new fakeram macros):designs/asap7/liteeth/sram/lib/fakeram_1rw1r_32w384d_8wm_sram.lib
         }
         direction : input;
         capacitance : 0.005;
         timing() {
-<<<<<<<< HEAD:designs/nangate45/NyuziProcessor/sram/lib/fakeram_20x64_2r1w.lib
-            related_pin     : w0_clk;
-            timing_type     : setup_rising ;
-            rise_constraint(fakeram_20x64_2r1w_constraint_template) {
-========
             related_pin     : "rw0_clk";
             timing_type     : setup_rising ;
             rise_constraint(fakeram_1rw1r_32w384d_8wm_sram_constraint_template) {
->>>>>>>> a290b7a (finished liteeth in 7,45,130 with new fakeram macros):designs/asap7/liteeth/sram/lib/fakeram_1rw1r_32w384d_8wm_sram.lib
                 index_1 ("0.009, 0.227");
                 index_2 ("0.009, 0.227");
                 values ( \
@@ -758,11 +385,7 @@ cell(fakeram_20x64_2r1w) {
                   "0.050, 0.050" \
                 )
             }
-<<<<<<<< HEAD:designs/nangate45/NyuziProcessor/sram/lib/fakeram_20x64_2r1w.lib
-            fall_constraint(fakeram_20x64_2r1w_constraint_template) {
-========
             fall_constraint(fakeram_1rw1r_32w384d_8wm_sram_constraint_template) {
->>>>>>>> a290b7a (finished liteeth in 7,45,130 with new fakeram macros):designs/asap7/liteeth/sram/lib/fakeram_1rw1r_32w384d_8wm_sram.lib
                 index_1 ("0.009, 0.227");
                 index_2 ("0.009, 0.227");
                 values ( \
@@ -772,15 +395,9 @@ cell(fakeram_20x64_2r1w) {
             }
         } 
         timing() {
-<<<<<<<< HEAD:designs/nangate45/NyuziProcessor/sram/lib/fakeram_20x64_2r1w.lib
-            related_pin     : w0_clk;
-            timing_type     : hold_rising ;
-            rise_constraint(fakeram_20x64_2r1w_constraint_template) {
-========
             related_pin     : "rw0_clk";
             timing_type     : hold_rising ;
             rise_constraint(fakeram_1rw1r_32w384d_8wm_sram_constraint_template) {
->>>>>>>> a290b7a (finished liteeth in 7,45,130 with new fakeram macros):designs/asap7/liteeth/sram/lib/fakeram_1rw1r_32w384d_8wm_sram.lib
                 index_1 ("0.009, 0.227");
                 index_2 ("0.009, 0.227");
                 values ( \
@@ -788,11 +405,7 @@ cell(fakeram_20x64_2r1w) {
                   "0.050, 0.050" \
                 )
             }
-<<<<<<<< HEAD:designs/nangate45/NyuziProcessor/sram/lib/fakeram_20x64_2r1w.lib
-            fall_constraint(fakeram_20x64_2r1w_constraint_template) {
-========
             fall_constraint(fakeram_1rw1r_32w384d_8wm_sram_constraint_template) {
->>>>>>>> a290b7a (finished liteeth in 7,45,130 with new fakeram macros):designs/asap7/liteeth/sram/lib/fakeram_1rw1r_32w384d_8wm_sram.lib
                 index_1 ("0.009, 0.227");
                 index_2 ("0.009, 0.227");
                 values ( \
@@ -802,38 +415,6 @@ cell(fakeram_20x64_2r1w) {
             }
         }
         internal_power(){
-<<<<<<<< HEAD:designs/nangate45/NyuziProcessor/sram/lib/fakeram_20x64_2r1w.lib
-            when : "(! (w0_we_in) )";
-            rise_power(fakeram_20x64_2r1w_energy_template_sigslew) {
-                index_1 ("0.009, 0.227");
-                values ("0.019, 0.019")
-            }
-            fall_power(fakeram_20x64_2r1w_energy_template_sigslew) {
-                index_1 ("0.009, 0.227");
-                values ("0.019, 0.019")
-            }
-        }
-        internal_power(){
-            when : "(w0_we_in)";
-            rise_power(fakeram_20x64_2r1w_energy_template_sigslew) {
-                index_1 ("0.009, 0.227");
-                values ("0.019, 0.019")
-            }
-            fall_power(fakeram_20x64_2r1w_energy_template_sigslew) {
-                index_1 ("0.009, 0.227");
-                values ("0.019, 0.019")
-            }
-        }
-    }
-    bus(r0_addr_in)   {
-        bus_type : fakeram_20x64_2r1w_ADDRESS;
-        direction : input;
-        capacitance : 0.005;
-        timing() {
-            related_pin : r0_clk;
-            timing_type : setup_rising ;
-            rise_constraint(fakeram_20x64_2r1w_constraint_template) {
-========
             when : "(! (rw0_we_in) )";
             rise_power(fakeram_1rw1r_32w384d_8wm_sram_energy_template_sigslew) {
                 index_1 ("0.009, 0.227");
@@ -863,7 +444,6 @@ cell(fakeram_20x64_2r1w) {
             related_pin : "rw0_clk";
             timing_type : setup_rising ;
             rise_constraint(fakeram_1rw1r_32w384d_8wm_sram_constraint_template) {
->>>>>>>> a290b7a (finished liteeth in 7,45,130 with new fakeram macros):designs/asap7/liteeth/sram/lib/fakeram_1rw1r_32w384d_8wm_sram.lib
                 index_1 ("0.009, 0.227");
                 index_2 ("0.009, 0.227");
                 values ( \
@@ -871,11 +451,7 @@ cell(fakeram_20x64_2r1w) {
                   "0.050, 0.050" \
                 )
             }
-<<<<<<<< HEAD:designs/nangate45/NyuziProcessor/sram/lib/fakeram_20x64_2r1w.lib
-            fall_constraint(fakeram_20x64_2r1w_constraint_template) {
-========
             fall_constraint(fakeram_1rw1r_32w384d_8wm_sram_constraint_template) {
->>>>>>>> a290b7a (finished liteeth in 7,45,130 with new fakeram macros):designs/asap7/liteeth/sram/lib/fakeram_1rw1r_32w384d_8wm_sram.lib
                 index_1 ("0.009, 0.227");
                 index_2 ("0.009, 0.227");
                 values ( \
@@ -885,15 +461,9 @@ cell(fakeram_20x64_2r1w) {
             }
         } 
         timing() {
-<<<<<<<< HEAD:designs/nangate45/NyuziProcessor/sram/lib/fakeram_20x64_2r1w.lib
-            related_pin : r0_clk;
-            timing_type : hold_rising ;
-            rise_constraint(fakeram_20x64_2r1w_constraint_template) {
-========
             related_pin : "rw0_clk";
             timing_type : hold_rising ;
             rise_constraint(fakeram_1rw1r_32w384d_8wm_sram_constraint_template) {
->>>>>>>> a290b7a (finished liteeth in 7,45,130 with new fakeram macros):designs/asap7/liteeth/sram/lib/fakeram_1rw1r_32w384d_8wm_sram.lib
                 index_1 ("0.009, 0.227");
                 index_2 ("0.009, 0.227");
                 values ( \
@@ -901,11 +471,7 @@ cell(fakeram_20x64_2r1w) {
                   "0.050, 0.050" \
                 )
             }
-<<<<<<<< HEAD:designs/nangate45/NyuziProcessor/sram/lib/fakeram_20x64_2r1w.lib
-            fall_constraint(fakeram_20x64_2r1w_constraint_template) {
-========
             fall_constraint(fakeram_1rw1r_32w384d_8wm_sram_constraint_template) {
->>>>>>>> a290b7a (finished liteeth in 7,45,130 with new fakeram macros):designs/asap7/liteeth/sram/lib/fakeram_1rw1r_32w384d_8wm_sram.lib
                 index_1 ("0.009, 0.227");
                 index_2 ("0.009, 0.227");
                 values ( \
@@ -915,26 +481,6 @@ cell(fakeram_20x64_2r1w) {
             }
         }
         internal_power(){
-<<<<<<<< HEAD:designs/nangate45/NyuziProcessor/sram/lib/fakeram_20x64_2r1w.lib
-            rise_power(fakeram_20x64_2r1w_energy_template_sigslew) {
-                index_1 ("0.009, 0.227");
-                values ("0.019, 0.019")
-            }
-            fall_power(fakeram_20x64_2r1w_energy_template_sigslew) {
-                index_1 ("0.009, 0.227");
-                values ("0.019, 0.019")
-            }
-        }
-    }
-    bus(r1_addr_in)   {
-        bus_type : fakeram_20x64_2r1w_ADDRESS;
-        direction : input;
-        capacitance : 0.005;
-        timing() {
-            related_pin : r1_clk;
-            timing_type : setup_rising ;
-            rise_constraint(fakeram_20x64_2r1w_constraint_template) {
-========
             rise_power(fakeram_1rw1r_32w384d_8wm_sram_energy_template_sigslew) {
                 index_1 ("0.009, 0.227");
                 values ("0.013, 0.013")
@@ -953,7 +499,6 @@ cell(fakeram_20x64_2r1w) {
             related_pin : "rw0_clk";
             timing_type : setup_rising ;
             rise_constraint(fakeram_1rw1r_32w384d_8wm_sram_constraint_template) {
->>>>>>>> a290b7a (finished liteeth in 7,45,130 with new fakeram macros):designs/asap7/liteeth/sram/lib/fakeram_1rw1r_32w384d_8wm_sram.lib
                 index_1 ("0.009, 0.227");
                 index_2 ("0.009, 0.227");
                 values ( \
@@ -961,11 +506,7 @@ cell(fakeram_20x64_2r1w) {
                   "0.050, 0.050" \
                 )
             }
-<<<<<<<< HEAD:designs/nangate45/NyuziProcessor/sram/lib/fakeram_20x64_2r1w.lib
-            fall_constraint(fakeram_20x64_2r1w_constraint_template) {
-========
             fall_constraint(fakeram_1rw1r_32w384d_8wm_sram_constraint_template) {
->>>>>>>> a290b7a (finished liteeth in 7,45,130 with new fakeram macros):designs/asap7/liteeth/sram/lib/fakeram_1rw1r_32w384d_8wm_sram.lib
                 index_1 ("0.009, 0.227");
                 index_2 ("0.009, 0.227");
                 values ( \
@@ -975,15 +516,9 @@ cell(fakeram_20x64_2r1w) {
             }
         } 
         timing() {
-<<<<<<<< HEAD:designs/nangate45/NyuziProcessor/sram/lib/fakeram_20x64_2r1w.lib
-            related_pin : r1_clk;
-            timing_type : hold_rising ;
-            rise_constraint(fakeram_20x64_2r1w_constraint_template) {
-========
             related_pin : "rw0_clk";
             timing_type : hold_rising ;
             rise_constraint(fakeram_1rw1r_32w384d_8wm_sram_constraint_template) {
->>>>>>>> a290b7a (finished liteeth in 7,45,130 with new fakeram macros):designs/asap7/liteeth/sram/lib/fakeram_1rw1r_32w384d_8wm_sram.lib
                 index_1 ("0.009, 0.227");
                 index_2 ("0.009, 0.227");
                 values ( \
@@ -991,11 +526,7 @@ cell(fakeram_20x64_2r1w) {
                   "0.050, 0.050" \
                 )
             }
-<<<<<<<< HEAD:designs/nangate45/NyuziProcessor/sram/lib/fakeram_20x64_2r1w.lib
-            fall_constraint(fakeram_20x64_2r1w_constraint_template) {
-========
             fall_constraint(fakeram_1rw1r_32w384d_8wm_sram_constraint_template) {
->>>>>>>> a290b7a (finished liteeth in 7,45,130 with new fakeram macros):designs/asap7/liteeth/sram/lib/fakeram_1rw1r_32w384d_8wm_sram.lib
                 index_1 ("0.009, 0.227");
                 index_2 ("0.009, 0.227");
                 values ( \
@@ -1005,26 +536,6 @@ cell(fakeram_20x64_2r1w) {
             }
         }
         internal_power(){
-<<<<<<<< HEAD:designs/nangate45/NyuziProcessor/sram/lib/fakeram_20x64_2r1w.lib
-            rise_power(fakeram_20x64_2r1w_energy_template_sigslew) {
-                index_1 ("0.009, 0.227");
-                values ("0.019, 0.019")
-            }
-            fall_power(fakeram_20x64_2r1w_energy_template_sigslew) {
-                index_1 ("0.009, 0.227");
-                values ("0.019, 0.019")
-            }
-        }
-    }
-    bus(w0_addr_in)   {
-        bus_type : fakeram_20x64_2r1w_ADDRESS;
-        direction : input;
-        capacitance : 0.005;
-        timing() {
-            related_pin : w0_clk;
-            timing_type : setup_rising ;
-            rise_constraint(fakeram_20x64_2r1w_constraint_template) {
-========
             rise_power(fakeram_1rw1r_32w384d_8wm_sram_energy_template_sigslew) {
                 index_1 ("0.009, 0.227");
                 values ("0.013, 0.013")
@@ -1047,7 +558,6 @@ cell(fakeram_20x64_2r1w) {
             related_pin     : rw0_clk;
             timing_type     : setup_rising ;
             rise_constraint(fakeram_1rw1r_32w384d_8wm_sram_constraint_template) {
->>>>>>>> a290b7a (finished liteeth in 7,45,130 with new fakeram macros):designs/asap7/liteeth/sram/lib/fakeram_1rw1r_32w384d_8wm_sram.lib
                 index_1 ("0.009, 0.227");
                 index_2 ("0.009, 0.227");
                 values ( \
@@ -1055,11 +565,7 @@ cell(fakeram_20x64_2r1w) {
                   "0.050, 0.050" \
                 )
             }
-<<<<<<<< HEAD:designs/nangate45/NyuziProcessor/sram/lib/fakeram_20x64_2r1w.lib
-            fall_constraint(fakeram_20x64_2r1w_constraint_template) {
-========
             fall_constraint(fakeram_1rw1r_32w384d_8wm_sram_constraint_template) {
->>>>>>>> a290b7a (finished liteeth in 7,45,130 with new fakeram macros):designs/asap7/liteeth/sram/lib/fakeram_1rw1r_32w384d_8wm_sram.lib
                 index_1 ("0.009, 0.227");
                 index_2 ("0.009, 0.227");
                 values ( \
@@ -1069,15 +575,9 @@ cell(fakeram_20x64_2r1w) {
             }
         } 
         timing() {
-<<<<<<<< HEAD:designs/nangate45/NyuziProcessor/sram/lib/fakeram_20x64_2r1w.lib
-            related_pin : w0_clk;
-            timing_type : hold_rising ;
-            rise_constraint(fakeram_20x64_2r1w_constraint_template) {
-========
             related_pin     : rw0_clk;
             timing_type     : hold_rising ;
             rise_constraint(fakeram_1rw1r_32w384d_8wm_sram_constraint_template) {
->>>>>>>> a290b7a (finished liteeth in 7,45,130 with new fakeram macros):designs/asap7/liteeth/sram/lib/fakeram_1rw1r_32w384d_8wm_sram.lib
                 index_1 ("0.009, 0.227");
                 index_2 ("0.009, 0.227");
                 values ( \
@@ -1085,11 +585,7 @@ cell(fakeram_20x64_2r1w) {
                   "0.050, 0.050" \
                 )
             }
-<<<<<<<< HEAD:designs/nangate45/NyuziProcessor/sram/lib/fakeram_20x64_2r1w.lib
-            fall_constraint(fakeram_20x64_2r1w_constraint_template) {
-========
             fall_constraint(fakeram_1rw1r_32w384d_8wm_sram_constraint_template) {
->>>>>>>> a290b7a (finished liteeth in 7,45,130 with new fakeram macros):designs/asap7/liteeth/sram/lib/fakeram_1rw1r_32w384d_8wm_sram.lib
                 index_1 ("0.009, 0.227");
                 index_2 ("0.009, 0.227");
                 values ( \
@@ -1099,19 +595,6 @@ cell(fakeram_20x64_2r1w) {
             }
         }
         internal_power(){
-<<<<<<<< HEAD:designs/nangate45/NyuziProcessor/sram/lib/fakeram_20x64_2r1w.lib
-            rise_power(fakeram_20x64_2r1w_energy_template_sigslew) {
-                index_1 ("0.009, 0.227");
-                values ("0.019, 0.019")
-            }
-            fall_power(fakeram_20x64_2r1w_energy_template_sigslew) {
-                index_1 ("0.009, 0.227");
-                values ("0.019, 0.019")
-            }
-        }
-    }
-    cell_leakage_power : 298.917;
-========
             when : "(! (rw0_we_in) )";
             rise_power(fakeram_1rw1r_32w384d_8wm_sram_energy_template_sigslew) {
                 index_1 ("0.009, 0.227");
@@ -1135,7 +618,6 @@ cell(fakeram_20x64_2r1w) {
         }
     }
     cell_leakage_power : 128.900;
->>>>>>>> a290b7a (finished liteeth in 7,45,130 with new fakeram macros):designs/asap7/liteeth/sram/lib/fakeram_1rw1r_32w384d_8wm_sram.lib
 }
 
 }

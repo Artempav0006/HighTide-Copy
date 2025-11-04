@@ -2,7 +2,7 @@ current_design liteeth_udp_raw_rgmii
 
 set clk_name clk
 set clk_port_name sys_clock
-set clk_period 1000
+set clk_period 590
 set clk_io_pct 0.2
 
 set clk_port [get_ports $clk_port_name]
