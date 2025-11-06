@@ -12,8 +12,8 @@ if [ ! -d ".venv" ]; then
     python3 -m venv .venv
 fi
 
-# echo "Activating virtual environment..."
-# source .venv/bin/activate
+echo "Activating virtual environment..."
+source .venv/bin/activate
 
 check_package() {
     python3 -c "import $1" 2>/dev/null
