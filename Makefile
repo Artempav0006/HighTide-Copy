@@ -19,7 +19,6 @@ DEV_RUN_TAG?=x
 .PHONY: dev
 ifeq ($(firstword $(MAKECMDGOALS)),dev)
 DEV_RUN_TAG:=$(shell date +%s%N)$(shell bash -c "echo $$RANDOM")
-export DESIGN_NICKNAME:= $(DESIGN_NAME).dev
 ifneq ($(lastword $(MAKECMDGOALS)),dev)
 dev: ;@:
 else
@@ -60,9 +59,10 @@ do-dev-setup:
 	rm -f $@
 	
 .PHONY: clean_design
-# DESIGN_SRC can be used to clean up any design-dependent source files
+
+# DEV_SRC can be used to clean up any dev-dependent source files
 clean_design:
-	rm -rf $(DESIGN_SRC)
+	rm -rf $(DEV_SRC)
 
 clean_all: clean_design
 
