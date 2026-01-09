@@ -1,7 +1,6 @@
 ROOT_DIR := $(shell git rev-parse --show-toplevel)
-SETTINGS_FILE := $(ROOT_DIR)/settings.mk
 
--include $(SETTINGS_FILE)
+-include $(ROOT_DIR)/settings.mk
 
 export LITEETH_DIR=$(BENCH_DESIGN_HOME)/src/liteeth
 
@@ -15,7 +14,6 @@ export GDS_ALLOW_EMPTY:=fakeram*
 
 export BUILD_DIR_NAME:=liteeth_builds
 
-# build target file
 define build
 TARGET_YML := $(strip $(1))
 PATCH_FILE := $(strip $(2))
@@ -30,7 +28,6 @@ $$(TARGET_FILE): $$(YML_FILE_PATH)
 	@echo "Converting to ASIC for $(DESIGN_NAME)..."
 endef
 
-# choose which cells to use
 ifeq ($(PLATFORM),asap7)
     VERILOG_DEFINES = -D USE_ASAP7_CELLS
 else ifeq ($(PLATFORM),nangate45)
@@ -39,7 +36,6 @@ else ifeq ($(PLATFORM),sky130hd)
     VERILOG_DEFINES = -D USE_SKY130HD_CELLS
 endif
 
-# choose which lib to use
 ifeq ($(USE_XILINX),1)
     VERILOG_FILES += \
         $(LITEETH_DIR)/libraries/xilinx/BUFG.v \
@@ -68,6 +64,5 @@ endif
 
 VERILOG_FILES += $(TARGET_FILE) $(LITEETH_DIR)/macros.v
 
-# export for subprocesses
 export VERILOG_DEFINES
 export VERILOG_FILES

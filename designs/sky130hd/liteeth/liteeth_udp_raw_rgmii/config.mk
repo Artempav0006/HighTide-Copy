@@ -5,7 +5,7 @@ export PLATFORM    = sky130hd
 
 export USE_LATTICE = 1
 
--include $(BENCH_DESIGN_HOME)/src/liteeth/build.mk
+-include $(BENCH_DESIGN_HOME)/src/liteeth/verilog.mk
 
 $(eval $(call build,udp_raw_ecp5rgmii.yml,udp_raw_rgmii.patch))
 

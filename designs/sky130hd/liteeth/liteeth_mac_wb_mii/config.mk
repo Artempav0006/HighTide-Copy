@@ -5,7 +5,7 @@ export PLATFORM    = sky130hd
 
 export USE_XILINX = 1
 
--include $(BENCH_DESIGN_HOME)/src/liteeth/build.mk
+-include $(BENCH_DESIGN_HOME)/src/liteeth/verilog.mk
 
 $(eval $(call build,wishbone_mii.yml,mac_wb_mii.patch))
 

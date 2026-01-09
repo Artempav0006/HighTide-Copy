@@ -5,7 +5,7 @@ export PLATFORM    = asap7
 
 export USE_XILINX = 1
 
--include $(BENCH_DESIGN_HOME)/src/liteeth/build.mk
+-include $(BENCH_DESIGN_HOME)/src/liteeth/verilog.mk
 
 $(eval $(call build,udp_s7phyrgmii.yml,udp_stream_rgmii.patch))
 
