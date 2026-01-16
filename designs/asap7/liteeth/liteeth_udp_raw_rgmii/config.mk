@@ -7,8 +7,6 @@ export USE_LATTICE = 1
 
 -include $(BENCH_DESIGN_HOME)/src/liteeth/verilog.mk
 
-$(eval $(call build,udp_raw_ecp5rgmii.yml,udp_raw_rgmii.patch))
-
 export SYNTH_HIERARCHICAL = 1
 
 export SDC_FILE      = $(PLATFORM_DESIGN_DIR)/$(DESIGN_NAME)/constraint.sdc

@@ -8,8 +8,8 @@
 //
 // Filename   : liteeth_core.v
 // Device     : LFE5U-25F-6BG256C
-// LiteX sha1 : 1629e49
-// Date       : 2026-01-07 21:50:06
+// LiteX sha1 : 1d28199
+// Date       : 2026-01-16 02:10:12
 //------------------------------------------------------------------------------
 
 `timescale 1ns / 1ps
@@ -297,6 +297,13 @@ UDPCore
 │    │    └─── csrstorage_1* (CSRStorage)
 │    │    └─── csrstatus_1* (CSRStatus)
 └─── csr_interconnect (InterconnectShared)
+└─── [FD1S3BX]
+└─── [ODDRX1F]
+└─── [FD1S3BX]
+└─── [FD1S3BX]
+└─── [FD1S3BX]
+└─── [ODDRX1F]
+└─── [ODDRX1F]
 └─── [ODDRX1F]
 └─── [ODDRX1F]
 └─── [ODDRX1F]
@@ -306,13 +313,6 @@ UDPCore
 └─── [IDDRX1F]
 └─── [IDDRX1F]
 └─── [TRELLIS_IO]
-└─── [ODDRX1F]
-└─── [ODDRX1F]
-└─── [FD1S3BX]
-└─── [FD1S3BX]
-└─── [FD1S3BX]
-└─── [ODDRX1F]
-└─── [FD1S3BX]
 * : Generated name.
 []: BlackBox.
 */
@@ -361,7 +361,6 @@ wire          arp_rx_depacketizer_new_last_be;
 reg           arp_rx_depacketizer_sink_d_last = 1'd0;
 wire          arp_rx_depacketizer_sink_first;
 wire          arp_rx_depacketizer_sink_last;
-wire          arp_rx_depacketizer_sink_last_be;
 wire    [7:0] arp_rx_depacketizer_sink_payload_data;
 wire          arp_rx_depacketizer_sink_payload_error;
 wire   [15:0] arp_rx_depacketizer_sink_payload_ethernet_type;
@@ -370,6 +369,7 @@ wire   [47:0] arp_rx_depacketizer_sink_payload_sender_mac;
 wire   [47:0] arp_rx_depacketizer_sink_payload_target_mac;
 reg           arp_rx_depacketizer_sink_ready = 1'd0;
 wire          arp_rx_depacketizer_sink_valid;
+wire          arp_rx_depacketizer_source_description;
 reg           arp_rx_depacketizer_source_last = 1'd0;
 reg           arp_rx_depacketizer_source_last_a = 1'd0;
 reg           arp_rx_depacketizer_source_last_b = 1'd0;
@@ -507,7 +507,6 @@ reg           arp_tx_packetizer_is_ongoing1 = 1'd0;
 reg           arp_tx_packetizer_is_ongoing2 = 1'd0;
 wire          arp_tx_packetizer_new_last_be;
 wire          arp_tx_packetizer_sink_last;
-wire          arp_tx_packetizer_sink_last_be;
 wire    [7:0] arp_tx_packetizer_sink_param_hwsize;
 wire   [15:0] arp_tx_packetizer_sink_param_hwtype;
 reg    [15:0] arp_tx_packetizer_sink_param_opcode = 16'd0;
@@ -522,6 +521,7 @@ reg           arp_tx_packetizer_sink_payload_error = 1'd0;
 reg           arp_tx_packetizer_sink_payload_last_be = 1'd0;
 reg           arp_tx_packetizer_sink_ready = 1'd0;
 reg           arp_tx_packetizer_sink_valid = 1'd0;
+wire          arp_tx_packetizer_source_description;
 reg           arp_tx_packetizer_source_first = 1'd0;
 reg           arp_tx_packetizer_source_last = 1'd0;
 reg           arp_tx_packetizer_source_last_a = 1'd0;
@@ -857,7 +857,6 @@ wire          icmp_rx_depacketizer_new_last_be;
 reg           icmp_rx_depacketizer_sink_d_last = 1'd0;
 wire          icmp_rx_depacketizer_sink_first;
 wire          icmp_rx_depacketizer_sink_last;
-wire          icmp_rx_depacketizer_sink_last_be;
 wire   [31:0] icmp_rx_depacketizer_sink_param_ip_address;
 wire   [15:0] icmp_rx_depacketizer_sink_param_length;
 wire    [7:0] icmp_rx_depacketizer_sink_param_protocol;
@@ -866,6 +865,7 @@ wire          icmp_rx_depacketizer_sink_payload_error;
 wire          icmp_rx_depacketizer_sink_payload_last_be;
 reg           icmp_rx_depacketizer_sink_ready = 1'd0;
 wire          icmp_rx_depacketizer_sink_valid;
+wire          icmp_rx_depacketizer_source_description;
 reg           icmp_rx_depacketizer_source_last = 1'd0;
 reg           icmp_rx_depacketizer_source_last_a = 1'd0;
 reg           icmp_rx_depacketizer_source_last_b = 1'd0;
@@ -922,7 +922,6 @@ reg           icmp_tx_packetizer_is_ongoing1 = 1'd0;
 reg           icmp_tx_packetizer_is_ongoing2 = 1'd0;
 wire          icmp_tx_packetizer_new_last_be;
 wire          icmp_tx_packetizer_sink_last;
-wire          icmp_tx_packetizer_sink_last_be;
 wire   [15:0] icmp_tx_packetizer_sink_param_checksum;
 wire    [7:0] icmp_tx_packetizer_sink_param_code;
 wire    [7:0] icmp_tx_packetizer_sink_param_msgtype;
@@ -932,6 +931,7 @@ reg           icmp_tx_packetizer_sink_payload_error = 1'd0;
 wire          icmp_tx_packetizer_sink_payload_last_be;
 reg           icmp_tx_packetizer_sink_ready = 1'd0;
 wire          icmp_tx_packetizer_sink_valid;
+wire          icmp_tx_packetizer_source_description;
 reg           icmp_tx_packetizer_source_first = 1'd0;
 reg           icmp_tx_packetizer_source_last = 1'd0;
 reg           icmp_tx_packetizer_source_last_a = 1'd0;
@@ -1097,7 +1097,6 @@ wire          ip_rx_depacketizer_new_last_be;
 reg           ip_rx_depacketizer_sink_d_last = 1'd0;
 wire          ip_rx_depacketizer_sink_first;
 wire          ip_rx_depacketizer_sink_last;
-wire          ip_rx_depacketizer_sink_last_be;
 wire    [7:0] ip_rx_depacketizer_sink_payload_data;
 wire          ip_rx_depacketizer_sink_payload_error;
 wire   [15:0] ip_rx_depacketizer_sink_payload_ethernet_type;
@@ -1106,6 +1105,7 @@ wire   [47:0] ip_rx_depacketizer_sink_payload_sender_mac;
 wire   [47:0] ip_rx_depacketizer_sink_payload_target_mac;
 reg           ip_rx_depacketizer_sink_ready = 1'd0;
 wire          ip_rx_depacketizer_sink_valid;
+wire          ip_rx_depacketizer_source_description;
 reg           ip_rx_depacketizer_source_last = 1'd0;
 reg           ip_rx_depacketizer_source_last_a = 1'd0;
 reg           ip_rx_depacketizer_source_last_b = 1'd0;
@@ -1235,7 +1235,6 @@ reg           ip_tx_packetizer_is_ongoing1 = 1'd0;
 reg           ip_tx_packetizer_is_ongoing2 = 1'd0;
 wire          ip_tx_packetizer_new_last_be;
 wire          ip_tx_packetizer_sink_last;
-wire          ip_tx_packetizer_sink_last_be;
 wire   [15:0] ip_tx_packetizer_sink_param_checksum;
 wire   [15:0] ip_tx_packetizer_sink_param_identification;
 wire    [3:0] ip_tx_packetizer_sink_param_ihl;
@@ -1250,6 +1249,7 @@ reg           ip_tx_packetizer_sink_payload_error = 1'd0;
 wire          ip_tx_packetizer_sink_payload_last_be;
 reg           ip_tx_packetizer_sink_ready = 1'd0;
 wire          ip_tx_packetizer_sink_valid;
+wire          ip_tx_packetizer_source_description;
 reg           ip_tx_packetizer_source_first = 1'd0;
 reg           ip_tx_packetizer_source_last = 1'd0;
 reg           ip_tx_packetizer_source_last_a = 1'd0;
@@ -2291,18 +2291,18 @@ reg           mac_core_tx_crc_ce = 1'd0;
 reg     [1:0] mac_core_tx_crc_cnt = 2'd3;
 wire          mac_core_tx_crc_cnt_done;
 reg    [31:0] mac_core_tx_crc_crc_next = 32'd0;
-reg    [31:0] mac_core_tx_crc_crc_packet = 32'd0;
-reg    [31:0] mac_core_tx_crc_crc_packet_liteethmac_clockdomainsrenamer1_next_value0 = 32'd0;
-reg           mac_core_tx_crc_crc_packet_liteethmac_clockdomainsrenamer1_next_value_ce0 = 1'd0;
 wire   [31:0] mac_core_tx_crc_crc_prev;
 wire    [7:0] mac_core_tx_crc_data0;
 wire    [7:0] mac_core_tx_crc_data1;
+reg    [31:0] mac_core_tx_crc_description = 32'd0;
+reg    [31:0] mac_core_tx_crc_description_liteethmac_clockdomainsrenamer1_next_value0 = 32'd0;
+reg           mac_core_tx_crc_description_liteethmac_clockdomainsrenamer1_next_value_ce0 = 1'd0;
 reg           mac_core_tx_crc_error = 1'd0;
-reg           mac_core_tx_crc_is_ongoing0 = 1'd0;
-reg           mac_core_tx_crc_is_ongoing1 = 1'd0;
-reg           mac_core_tx_crc_last_be = 1'd0;
-reg           mac_core_tx_crc_last_be_liteethmac_clockdomainsrenamer1_next_value1 = 1'd0;
-reg           mac_core_tx_crc_last_be_liteethmac_clockdomainsrenamer1_next_value_ce1 = 1'd0;
+reg           mac_core_tx_crc_fsm = 1'd0;
+reg           mac_core_tx_crc_fsm_is_ongoing0 = 1'd0;
+reg           mac_core_tx_crc_fsm_is_ongoing1 = 1'd0;
+reg           mac_core_tx_crc_fsm_liteethmac_clockdomainsrenamer1_next_value1 = 1'd0;
+reg           mac_core_tx_crc_fsm_liteethmac_clockdomainsrenamer1_next_value_ce1 = 1'd0;
 wire          mac_core_tx_crc_pipe_valid_sink_first;
 wire          mac_core_tx_crc_pipe_valid_sink_last;
 wire    [7:0] mac_core_tx_crc_pipe_valid_sink_payload_data;
@@ -2505,12 +2505,12 @@ wire          mac_depacketizer_new_last_be;
 reg           mac_depacketizer_sink_d_last = 1'd0;
 wire          mac_depacketizer_sink_first;
 wire          mac_depacketizer_sink_last;
-wire          mac_depacketizer_sink_last_be;
 wire    [7:0] mac_depacketizer_sink_payload_data;
 wire          mac_depacketizer_sink_payload_error;
 wire          mac_depacketizer_sink_payload_last_be;
 reg           mac_depacketizer_sink_ready = 1'd0;
 wire          mac_depacketizer_sink_valid;
+wire          mac_depacketizer_source_description;
 reg           mac_depacketizer_source_first = 1'd0;
 reg           mac_depacketizer_source_last = 1'd0;
 reg           mac_depacketizer_source_last_a = 1'd0;
@@ -2545,7 +2545,6 @@ reg           mac_packetizer_is_ongoing2 = 1'd0;
 wire          mac_packetizer_new_last_be;
 wire          mac_packetizer_sink_first;
 wire          mac_packetizer_sink_last;
-wire          mac_packetizer_sink_last_be;
 wire    [7:0] mac_packetizer_sink_payload_data;
 wire          mac_packetizer_sink_payload_error;
 wire   [15:0] mac_packetizer_sink_payload_ethernet_type;
@@ -2554,6 +2553,7 @@ wire   [47:0] mac_packetizer_sink_payload_sender_mac;
 wire   [47:0] mac_packetizer_sink_payload_target_mac;
 reg           mac_packetizer_sink_ready = 1'd0;
 wire          mac_packetizer_sink_valid;
+wire          mac_packetizer_source_description;
 reg           mac_packetizer_source_first = 1'd0;
 reg           mac_packetizer_source_last = 1'd0;
 reg           mac_packetizer_source_last_a = 1'd0;
@@ -2567,20 +2567,20 @@ reg           mac_packetizer_source_valid = 1'd0;
 reg   [111:0] mac_packetizer_sr = 112'd0;
 reg           mac_packetizer_sr_load = 1'd0;
 reg           mac_packetizer_sr_shift = 1'd0;
-reg           multiregimpl00 = 1'd0;
-reg           multiregimpl01 = 1'd0;
-reg     [4:0] multiregimpl10 = 5'd0;
-reg     [4:0] multiregimpl11 = 5'd0;
-reg     [4:0] multiregimpl20 = 5'd0;
-reg     [4:0] multiregimpl21 = 5'd0;
-reg           multiregimpl30 = 1'd0;
-reg           multiregimpl31 = 1'd0;
-reg           multiregimpl40 = 1'd0;
-reg           multiregimpl41 = 1'd0;
-reg     [4:0] multiregimpl50 = 5'd0;
-reg     [4:0] multiregimpl51 = 5'd0;
-reg     [4:0] multiregimpl60 = 5'd0;
-reg     [4:0] multiregimpl61 = 5'd0;
+reg           multiregimpl0_regs0 = 1'd0;
+reg           multiregimpl0_regs1 = 1'd0;
+reg     [4:0] multiregimpl1_regs0 = 5'd0;
+reg     [4:0] multiregimpl1_regs1 = 5'd0;
+reg     [4:0] multiregimpl2_regs0 = 5'd0;
+reg     [4:0] multiregimpl2_regs1 = 5'd0;
+reg           multiregimpl3_regs0 = 1'd0;
+reg           multiregimpl3_regs1 = 1'd0;
+reg           multiregimpl4_regs0 = 1'd0;
+reg           multiregimpl4_regs1 = 1'd0;
+reg     [4:0] multiregimpl5_regs0 = 5'd0;
+reg     [4:0] multiregimpl5_regs1 = 5'd0;
+reg     [4:0] multiregimpl6_regs0 = 5'd0;
+reg     [4:0] multiregimpl6_regs1 = 5'd0;
 wire          por_clk;
 wire          re;
 wire          rst10;
@@ -2670,7 +2670,6 @@ wire          rx_depacketizer_new_last_be;
 reg           rx_depacketizer_sink_d_last = 1'd0;
 wire          rx_depacketizer_sink_first;
 wire          rx_depacketizer_sink_last;
-wire          rx_depacketizer_sink_last_be;
 wire   [31:0] rx_depacketizer_sink_param_ip_address;
 wire   [15:0] rx_depacketizer_sink_param_length;
 wire    [7:0] rx_depacketizer_sink_param_protocol;
@@ -2679,6 +2678,7 @@ wire          rx_depacketizer_sink_payload_error;
 wire          rx_depacketizer_sink_payload_last_be;
 reg           rx_depacketizer_sink_ready = 1'd0;
 wire          rx_depacketizer_sink_valid;
+wire          rx_depacketizer_source_description;
 reg           rx_depacketizer_source_last = 1'd0;
 reg           rx_depacketizer_source_last_a = 1'd0;
 reg           rx_depacketizer_source_last_b = 1'd0;
@@ -2799,7 +2799,6 @@ reg           tx_packetizer_is_ongoing1 = 1'd0;
 reg           tx_packetizer_is_ongoing2 = 1'd0;
 wire          tx_packetizer_new_last_be;
 wire          tx_packetizer_sink_last;
-wire          tx_packetizer_sink_last_be;
 wire   [15:0] tx_packetizer_sink_param_checksum;
 wire   [15:0] tx_packetizer_sink_param_dst_port;
 wire   [15:0] tx_packetizer_sink_param_length;
@@ -2809,6 +2808,7 @@ reg           tx_packetizer_sink_payload_error = 1'd0;
 wire          tx_packetizer_sink_payload_last_be;
 reg           tx_packetizer_sink_ready = 1'd0;
 wire          tx_packetizer_sink_valid;
+wire          tx_packetizer_source_description;
 reg           tx_packetizer_source_first = 1'd0;
 reg           tx_packetizer_source_last = 1'd0;
 reg           tx_packetizer_source_last_a = 1'd0;
@@ -3148,12 +3148,12 @@ end
 always @(*) begin
     liteethmac_txdatapath_bufferizeendpoints_next_state <= 2'd0;
     mac_core_tx_crc_ce <= 1'd0;
-    mac_core_tx_crc_crc_packet_liteethmac_clockdomainsrenamer1_next_value0 <= 32'd0;
-    mac_core_tx_crc_crc_packet_liteethmac_clockdomainsrenamer1_next_value_ce0 <= 1'd0;
-    mac_core_tx_crc_is_ongoing0 <= 1'd0;
-    mac_core_tx_crc_is_ongoing1 <= 1'd0;
-    mac_core_tx_crc_last_be_liteethmac_clockdomainsrenamer1_next_value1 <= 1'd0;
-    mac_core_tx_crc_last_be_liteethmac_clockdomainsrenamer1_next_value_ce1 <= 1'd0;
+    mac_core_tx_crc_description_liteethmac_clockdomainsrenamer1_next_value0 <= 32'd0;
+    mac_core_tx_crc_description_liteethmac_clockdomainsrenamer1_next_value_ce0 <= 1'd0;
+    mac_core_tx_crc_fsm_is_ongoing0 <= 1'd0;
+    mac_core_tx_crc_fsm_is_ongoing1 <= 1'd0;
+    mac_core_tx_crc_fsm_liteethmac_clockdomainsrenamer1_next_value1 <= 1'd0;
+    mac_core_tx_crc_fsm_liteethmac_clockdomainsrenamer1_next_value_ce1 <= 1'd0;
     mac_core_tx_crc_reset <= 1'd0;
     mac_core_tx_crc_sink_ready <= 1'd0;
     mac_core_tx_crc_source_first <= 1'd0;
@@ -3188,14 +3188,14 @@ always @(*) begin
                 if ((1'd0 & (mac_core_tx_crc_sink_payload_last_be <= 4'd15))) begin
                     liteethmac_txdatapath_bufferizeendpoints_next_state <= 1'd0;
                 end else begin
-                    mac_core_tx_crc_crc_packet_liteethmac_clockdomainsrenamer1_next_value0 <= mac_core_tx_crc_value;
-                    mac_core_tx_crc_crc_packet_liteethmac_clockdomainsrenamer1_next_value_ce0 <= 1'd1;
+                    mac_core_tx_crc_description_liteethmac_clockdomainsrenamer1_next_value0 <= mac_core_tx_crc_value;
+                    mac_core_tx_crc_description_liteethmac_clockdomainsrenamer1_next_value_ce0 <= 1'd1;
                     if (1'd0) begin
-                        mac_core_tx_crc_last_be_liteethmac_clockdomainsrenamer1_next_value1 <= (mac_core_tx_crc_sink_payload_last_be >>> 3'd4);
-                        mac_core_tx_crc_last_be_liteethmac_clockdomainsrenamer1_next_value_ce1 <= 1'd1;
+                        mac_core_tx_crc_fsm_liteethmac_clockdomainsrenamer1_next_value1 <= (mac_core_tx_crc_sink_payload_last_be >>> 3'd4);
+                        mac_core_tx_crc_fsm_liteethmac_clockdomainsrenamer1_next_value_ce1 <= 1'd1;
                     end else begin
-                        mac_core_tx_crc_last_be_liteethmac_clockdomainsrenamer1_next_value1 <= mac_core_tx_crc_sink_payload_last_be;
-                        mac_core_tx_crc_last_be_liteethmac_clockdomainsrenamer1_next_value_ce1 <= 1'd1;
+                        mac_core_tx_crc_fsm_liteethmac_clockdomainsrenamer1_next_value1 <= mac_core_tx_crc_sink_payload_last_be;
+                        mac_core_tx_crc_fsm_liteethmac_clockdomainsrenamer1_next_value_ce1 <= 1'd1;
                     end
                     liteethmac_txdatapath_bufferizeendpoints_next_state <= 2'd2;
                 end
@@ -3205,16 +3205,16 @@ always @(*) begin
             mac_core_tx_crc_source_valid <= 1'd1;
             case (mac_core_tx_crc_cnt)
                 1'd0: begin
-                    mac_core_tx_crc_source_payload_data <= mac_core_tx_crc_crc_packet[31:24];
+                    mac_core_tx_crc_source_payload_data <= mac_core_tx_crc_description[31:24];
                 end
                 1'd1: begin
-                    mac_core_tx_crc_source_payload_data <= mac_core_tx_crc_crc_packet[23:16];
+                    mac_core_tx_crc_source_payload_data <= mac_core_tx_crc_description[23:16];
                 end
                 2'd2: begin
-                    mac_core_tx_crc_source_payload_data <= mac_core_tx_crc_crc_packet[15:8];
+                    mac_core_tx_crc_source_payload_data <= mac_core_tx_crc_description[15:8];
                 end
                 default: begin
-                    mac_core_tx_crc_source_payload_data <= mac_core_tx_crc_crc_packet[7:0];
+                    mac_core_tx_crc_source_payload_data <= mac_core_tx_crc_description[7:0];
                 end
             endcase
             if (mac_core_tx_crc_cnt_done) begin
@@ -3223,7 +3223,7 @@ always @(*) begin
                     liteethmac_txdatapath_bufferizeendpoints_next_state <= 1'd0;
                 end
             end
-            mac_core_tx_crc_is_ongoing1 <= 1'd1;
+            mac_core_tx_crc_fsm_is_ongoing1 <= 1'd1;
         end
         default: begin
             mac_core_tx_crc_reset <= 1'd1;
@@ -3232,7 +3232,7 @@ always @(*) begin
                 mac_core_tx_crc_sink_ready <= 1'd0;
                 liteethmac_txdatapath_bufferizeendpoints_next_state <= 1'd1;
             end
-            mac_core_tx_crc_is_ongoing0 <= 1'd1;
+            mac_core_tx_crc_fsm_is_ongoing0 <= 1'd1;
         end
     endcase
 end
@@ -3888,8 +3888,8 @@ always @(*) begin
     mac_packetizer_header[95:48] <= {mac_packetizer_sink_payload_sender_mac[7:0], mac_packetizer_sink_payload_sender_mac[15:8], mac_packetizer_sink_payload_sender_mac[23:16], mac_packetizer_sink_payload_sender_mac[31:24], mac_packetizer_sink_payload_sender_mac[39:32], mac_packetizer_sink_payload_sender_mac[47:40]};
     mac_packetizer_header[47:0] <= {mac_packetizer_sink_payload_target_mac[7:0], mac_packetizer_sink_payload_target_mac[15:8], mac_packetizer_sink_payload_target_mac[23:16], mac_packetizer_sink_payload_target_mac[31:24], mac_packetizer_sink_payload_target_mac[39:32], mac_packetizer_sink_payload_target_mac[47:40]};
 end
-assign mac_packetizer_sink_last_be = mac_packetizer_sink_last;
-assign mac_packetizer_new_last_be = {mac_packetizer_sink_last_be};
+assign mac_packetizer_source_description = mac_packetizer_sink_last;
+assign mac_packetizer_new_last_be = {mac_packetizer_source_description};
 assign mac_packetizer_in_data_copy = (mac_packetizer_is_ongoing0 | mac_packetizer_is_ongoing1);
 always @(*) begin
     mac_packetizer_source_last <= 1'd0;
@@ -3990,7 +3990,7 @@ always @(*) begin
             end
         end
         default: begin
-            if (((mac_packetizer_in_data_copy & mac_packetizer_sink_last) & (mac_packetizer_sink_last_be > mac_packetizer_new_last_be))) begin
+            if (((mac_packetizer_in_data_copy & mac_packetizer_sink_last) & (mac_packetizer_source_description > mac_packetizer_new_last_be))) begin
                 mac_packetizer_source_last_b <= 1'd0;
                 mac_packetizer_source_last_s <= 1'd1;
                 mac_packetizer_source_payload_last_be <= 1'd0;
@@ -4021,8 +4021,8 @@ assign mac_depacketizer_source_payload_ethernet_type = {mac_depacketizer_header[
 assign mac_depacketizer_source_payload_sender_mac = {mac_depacketizer_header[55:48], mac_depacketizer_header[63:56], mac_depacketizer_header[71:64], mac_depacketizer_header[79:72], mac_depacketizer_header[87:80], mac_depacketizer_header[95:88]};
 assign mac_depacketizer_source_payload_target_mac = {mac_depacketizer_header[7:0], mac_depacketizer_header[15:8], mac_depacketizer_header[23:16], mac_depacketizer_header[31:24], mac_depacketizer_header[39:32], mac_depacketizer_header[47:40]};
 assign mac_depacketizer_source_payload_error = mac_depacketizer_sink_payload_error;
-assign mac_depacketizer_sink_last_be = mac_depacketizer_sink_last;
-assign mac_depacketizer_new_last_be = {mac_depacketizer_sink_last_be};
+assign mac_depacketizer_source_description = mac_depacketizer_sink_last;
+assign mac_depacketizer_new_last_be = {mac_depacketizer_source_description};
 assign mac_depacketizer_is_in_copy = (mac_depacketizer_is_ongoing0 | mac_depacketizer_is_ongoing1);
 always @(*) begin
     mac_depacketizer_source_last <= 1'd0;
@@ -4113,7 +4113,7 @@ always @(*) begin
             end
         end
         default: begin
-            if (((mac_depacketizer_sink_valid & mac_depacketizer_sink_last) & (mac_depacketizer_sink_last_be > mac_depacketizer_new_last_be))) begin
+            if (((mac_depacketizer_sink_valid & mac_depacketizer_sink_last) & (mac_depacketizer_source_description > mac_depacketizer_new_last_be))) begin
                 mac_depacketizer_source_last_b <= 1'd0;
                 mac_depacketizer_source_last_s <= 1'd1;
                 mac_depacketizer_source_payload_last_be <= 1'd0;
@@ -4232,8 +4232,8 @@ always @(*) begin
     arp_tx_packetizer_header[223:192] <= {arp_tx_packetizer_sink_param_target_ip[7:0], arp_tx_packetizer_sink_param_target_ip[15:8], arp_tx_packetizer_sink_param_target_ip[23:16], arp_tx_packetizer_sink_param_target_ip[31:24]};
     arp_tx_packetizer_header[191:144] <= {arp_tx_packetizer_sink_param_target_mac[7:0], arp_tx_packetizer_sink_param_target_mac[15:8], arp_tx_packetizer_sink_param_target_mac[23:16], arp_tx_packetizer_sink_param_target_mac[31:24], arp_tx_packetizer_sink_param_target_mac[39:32], arp_tx_packetizer_sink_param_target_mac[47:40]};
 end
-assign arp_tx_packetizer_sink_last_be = arp_tx_packetizer_sink_last;
-assign arp_tx_packetizer_new_last_be = {arp_tx_packetizer_sink_last_be};
+assign arp_tx_packetizer_source_description = arp_tx_packetizer_sink_last;
+assign arp_tx_packetizer_new_last_be = {arp_tx_packetizer_source_description};
 assign arp_tx_packetizer_in_data_copy = (arp_tx_packetizer_is_ongoing0 | arp_tx_packetizer_is_ongoing1);
 always @(*) begin
     arp_tx_packetizer_source_last <= 1'd0;
@@ -4334,7 +4334,7 @@ always @(*) begin
             end
         end
         default: begin
-            if (((arp_tx_packetizer_in_data_copy & arp_tx_packetizer_sink_last) & (arp_tx_packetizer_sink_last_be > arp_tx_packetizer_new_last_be))) begin
+            if (((arp_tx_packetizer_in_data_copy & arp_tx_packetizer_sink_last) & (arp_tx_packetizer_source_description > arp_tx_packetizer_new_last_be))) begin
                 arp_tx_packetizer_source_last_b <= 1'd0;
                 arp_tx_packetizer_source_last_s <= 1'd1;
                 arp_tx_packetizer_source_payload_last_be <= 1'd0;
@@ -4429,8 +4429,8 @@ assign arp_rx_depacketizer_source_param_sender_mac = {arp_rx_depacketizer_header
 assign arp_rx_depacketizer_source_param_target_ip = {arp_rx_depacketizer_header[199:192], arp_rx_depacketizer_header[207:200], arp_rx_depacketizer_header[215:208], arp_rx_depacketizer_header[223:216]};
 assign arp_rx_depacketizer_source_param_target_mac = {arp_rx_depacketizer_header[151:144], arp_rx_depacketizer_header[159:152], arp_rx_depacketizer_header[167:160], arp_rx_depacketizer_header[175:168], arp_rx_depacketizer_header[183:176], arp_rx_depacketizer_header[191:184]};
 assign arp_rx_depacketizer_source_payload_error = arp_rx_depacketizer_sink_payload_error;
-assign arp_rx_depacketizer_sink_last_be = arp_rx_depacketizer_sink_last;
-assign arp_rx_depacketizer_new_last_be = {arp_rx_depacketizer_sink_last_be};
+assign arp_rx_depacketizer_source_description = arp_rx_depacketizer_sink_last;
+assign arp_rx_depacketizer_new_last_be = {arp_rx_depacketizer_source_description};
 assign arp_rx_depacketizer_is_in_copy = (arp_rx_depacketizer_is_ongoing0 | arp_rx_depacketizer_is_ongoing1);
 always @(*) begin
     arp_rx_depacketizer_source_last <= 1'd0;
@@ -4521,7 +4521,7 @@ always @(*) begin
             end
         end
         default: begin
-            if (((arp_rx_depacketizer_sink_valid & arp_rx_depacketizer_sink_last) & (arp_rx_depacketizer_sink_last_be > arp_rx_depacketizer_new_last_be))) begin
+            if (((arp_rx_depacketizer_sink_valid & arp_rx_depacketizer_sink_last) & (arp_rx_depacketizer_source_description > arp_rx_depacketizer_new_last_be))) begin
                 arp_rx_depacketizer_source_last_b <= 1'd0;
                 arp_rx_depacketizer_source_last_s <= 1'd1;
                 arp_rx_depacketizer_source_payload_last_be <= 1'd0;
@@ -4914,8 +4914,8 @@ always @(*) begin
     ip_tx_packetizer_header[71:64] <= {ip_tx_packetizer_sink_param_ttl};
     ip_tx_packetizer_header[7:4] <= {ip_tx_packetizer_sink_param_version};
 end
-assign ip_tx_packetizer_sink_last_be = ip_tx_packetizer_sink_last;
-assign ip_tx_packetizer_new_last_be = {ip_tx_packetizer_sink_last_be};
+assign ip_tx_packetizer_source_description = ip_tx_packetizer_sink_last;
+assign ip_tx_packetizer_new_last_be = {ip_tx_packetizer_source_description};
 assign ip_tx_packetizer_in_data_copy = (ip_tx_packetizer_is_ongoing0 | ip_tx_packetizer_is_ongoing1);
 always @(*) begin
     ip_tx_packetizer_source_last <= 1'd0;
@@ -5016,7 +5016,7 @@ always @(*) begin
             end
         end
         default: begin
-            if (((ip_tx_packetizer_in_data_copy & ip_tx_packetizer_sink_last) & (ip_tx_packetizer_sink_last_be > ip_tx_packetizer_new_last_be))) begin
+            if (((ip_tx_packetizer_in_data_copy & ip_tx_packetizer_sink_last) & (ip_tx_packetizer_source_description > ip_tx_packetizer_new_last_be))) begin
                 ip_tx_packetizer_source_last_b <= 1'd0;
                 ip_tx_packetizer_source_last_s <= 1'd1;
                 ip_tx_packetizer_source_payload_last_be <= 1'd0;
@@ -5154,8 +5154,8 @@ assign ip_rx_depacketizer_source_param_total_length = {ip_rx_depacketizer_header
 assign ip_rx_depacketizer_source_param_ttl = {ip_rx_depacketizer_header[71:64]};
 assign ip_rx_depacketizer_source_param_version = {ip_rx_depacketizer_header[7:4]};
 assign ip_rx_depacketizer_source_payload_error = ip_rx_depacketizer_sink_payload_error;
-assign ip_rx_depacketizer_sink_last_be = ip_rx_depacketizer_sink_last;
-assign ip_rx_depacketizer_new_last_be = {ip_rx_depacketizer_sink_last_be};
+assign ip_rx_depacketizer_source_description = ip_rx_depacketizer_sink_last;
+assign ip_rx_depacketizer_new_last_be = {ip_rx_depacketizer_source_description};
 assign ip_rx_depacketizer_is_in_copy = (ip_rx_depacketizer_is_ongoing0 | ip_rx_depacketizer_is_ongoing1);
 always @(*) begin
     ip_rx_depacketizer_source_last <= 1'd0;
@@ -5246,7 +5246,7 @@ always @(*) begin
             end
         end
         default: begin
-            if (((ip_rx_depacketizer_sink_valid & ip_rx_depacketizer_sink_last) & (ip_rx_depacketizer_sink_last_be > ip_rx_depacketizer_new_last_be))) begin
+            if (((ip_rx_depacketizer_sink_valid & ip_rx_depacketizer_sink_last) & (ip_rx_depacketizer_source_description > ip_rx_depacketizer_new_last_be))) begin
                 ip_rx_depacketizer_source_last_b <= 1'd0;
                 ip_rx_depacketizer_source_last_s <= 1'd1;
                 ip_rx_depacketizer_source_payload_last_be <= 1'd0;
@@ -5513,8 +5513,8 @@ always @(*) begin
     icmp_tx_packetizer_header[7:0] <= {icmp_tx_packetizer_sink_param_msgtype};
     icmp_tx_packetizer_header[63:32] <= {icmp_tx_packetizer_sink_param_quench[7:0], icmp_tx_packetizer_sink_param_quench[15:8], icmp_tx_packetizer_sink_param_quench[23:16], icmp_tx_packetizer_sink_param_quench[31:24]};
 end
-assign icmp_tx_packetizer_sink_last_be = icmp_tx_packetizer_sink_last;
-assign icmp_tx_packetizer_new_last_be = {icmp_tx_packetizer_sink_last_be};
+assign icmp_tx_packetizer_source_description = icmp_tx_packetizer_sink_last;
+assign icmp_tx_packetizer_new_last_be = {icmp_tx_packetizer_source_description};
 assign icmp_tx_packetizer_in_data_copy = (icmp_tx_packetizer_is_ongoing0 | icmp_tx_packetizer_is_ongoing1);
 always @(*) begin
     icmp_tx_packetizer_source_last <= 1'd0;
@@ -5615,7 +5615,7 @@ always @(*) begin
             end
         end
         default: begin
-            if (((icmp_tx_packetizer_in_data_copy & icmp_tx_packetizer_sink_last) & (icmp_tx_packetizer_sink_last_be > icmp_tx_packetizer_new_last_be))) begin
+            if (((icmp_tx_packetizer_in_data_copy & icmp_tx_packetizer_sink_last) & (icmp_tx_packetizer_source_description > icmp_tx_packetizer_new_last_be))) begin
                 icmp_tx_packetizer_source_last_b <= 1'd0;
                 icmp_tx_packetizer_source_last_s <= 1'd1;
                 icmp_tx_packetizer_source_payload_last_be <= 1'd0;
@@ -5687,8 +5687,8 @@ assign icmp_rx_depacketizer_source_param_code = {icmp_rx_depacketizer_header[15:
 assign icmp_rx_depacketizer_source_param_msgtype = {icmp_rx_depacketizer_header[7:0]};
 assign icmp_rx_depacketizer_source_param_quench = {icmp_rx_depacketizer_header[39:32], icmp_rx_depacketizer_header[47:40], icmp_rx_depacketizer_header[55:48], icmp_rx_depacketizer_header[63:56]};
 assign icmp_rx_depacketizer_source_payload_error = icmp_rx_depacketizer_sink_payload_error;
-assign icmp_rx_depacketizer_sink_last_be = icmp_rx_depacketizer_sink_last;
-assign icmp_rx_depacketizer_new_last_be = {icmp_rx_depacketizer_sink_last_be};
+assign icmp_rx_depacketizer_source_description = icmp_rx_depacketizer_sink_last;
+assign icmp_rx_depacketizer_new_last_be = {icmp_rx_depacketizer_source_description};
 assign icmp_rx_depacketizer_is_in_copy = (icmp_rx_depacketizer_is_ongoing0 | icmp_rx_depacketizer_is_ongoing1);
 always @(*) begin
     icmp_rx_depacketizer_source_last <= 1'd0;
@@ -5779,7 +5779,7 @@ always @(*) begin
             end
         end
         default: begin
-            if (((icmp_rx_depacketizer_sink_valid & icmp_rx_depacketizer_sink_last) & (icmp_rx_depacketizer_sink_last_be > icmp_rx_depacketizer_new_last_be))) begin
+            if (((icmp_rx_depacketizer_sink_valid & icmp_rx_depacketizer_sink_last) & (icmp_rx_depacketizer_source_description > icmp_rx_depacketizer_new_last_be))) begin
                 icmp_rx_depacketizer_source_last_b <= 1'd0;
                 icmp_rx_depacketizer_source_last_s <= 1'd1;
                 icmp_rx_depacketizer_source_payload_last_be <= 1'd0;
@@ -6048,8 +6048,8 @@ always @(*) begin
     tx_packetizer_header[47:32] <= {tx_packetizer_sink_param_length[7:0], tx_packetizer_sink_param_length[15:8]};
     tx_packetizer_header[15:0] <= {tx_packetizer_sink_param_src_port[7:0], tx_packetizer_sink_param_src_port[15:8]};
 end
-assign tx_packetizer_sink_last_be = tx_packetizer_sink_last;
-assign tx_packetizer_new_last_be = {tx_packetizer_sink_last_be};
+assign tx_packetizer_source_description = tx_packetizer_sink_last;
+assign tx_packetizer_new_last_be = {tx_packetizer_source_description};
 assign tx_packetizer_in_data_copy = (tx_packetizer_is_ongoing0 | tx_packetizer_is_ongoing1);
 always @(*) begin
     tx_packetizer_source_last <= 1'd0;
@@ -6150,7 +6150,7 @@ always @(*) begin
             end
         end
         default: begin
-            if (((tx_packetizer_in_data_copy & tx_packetizer_sink_last) & (tx_packetizer_sink_last_be > tx_packetizer_new_last_be))) begin
+            if (((tx_packetizer_in_data_copy & tx_packetizer_sink_last) & (tx_packetizer_source_description > tx_packetizer_new_last_be))) begin
                 tx_packetizer_source_last_b <= 1'd0;
                 tx_packetizer_source_last_s <= 1'd1;
                 tx_packetizer_source_payload_last_be <= 1'd0;
@@ -6239,8 +6239,8 @@ assign rx_depacketizer_source_param_dst_port = {rx_depacketizer_header[23:16], r
 assign rx_depacketizer_source_param_length = {rx_depacketizer_header[39:32], rx_depacketizer_header[47:40]};
 assign rx_depacketizer_source_param_src_port = {rx_depacketizer_header[7:0], rx_depacketizer_header[15:8]};
 assign rx_depacketizer_source_payload_error = rx_depacketizer_sink_payload_error;
-assign rx_depacketizer_sink_last_be = rx_depacketizer_sink_last;
-assign rx_depacketizer_new_last_be = {rx_depacketizer_sink_last_be};
+assign rx_depacketizer_source_description = rx_depacketizer_sink_last;
+assign rx_depacketizer_new_last_be = {rx_depacketizer_source_description};
 assign rx_depacketizer_is_in_copy = (rx_depacketizer_is_ongoing0 | rx_depacketizer_is_ongoing1);
 always @(*) begin
     rx_depacketizer_source_last <= 1'd0;
@@ -6331,7 +6331,7 @@ always @(*) begin
             end
         end
         default: begin
-            if (((rx_depacketizer_sink_valid & rx_depacketizer_sink_last) & (rx_depacketizer_sink_last_be > rx_depacketizer_new_last_be))) begin
+            if (((rx_depacketizer_sink_valid & rx_depacketizer_sink_last) & (rx_depacketizer_source_description > rx_depacketizer_new_last_be))) begin
                 rx_depacketizer_source_last_b <= 1'd0;
                 rx_depacketizer_source_last_s <= 1'd1;
                 rx_depacketizer_source_payload_last_be <= 1'd0;
@@ -7623,14 +7623,14 @@ assign dat_r = (interface0_bank_bus_dat_r | interface1_bank_bus_dat_r);
 always @(*) begin
     ethphy__r_status <= 1'd0;
     ethphy__r_status <= ethphy_r;
-    ethphy__r_status <= multiregimpl01;
+    ethphy__r_status <= multiregimpl0_regs1;
 end
-assign mac_core_txdatapath_cdc_produce_rdomain = multiregimpl11;
-assign mac_core_txdatapath_cdc_consume_wdomain = multiregimpl21;
-assign mac_core_pulsesynchronizer0_toggle_o = multiregimpl31;
-assign mac_core_pulsesynchronizer1_toggle_o = multiregimpl41;
-assign mac_core_cdc_produce_rdomain = multiregimpl51;
-assign mac_core_cdc_consume_wdomain = multiregimpl61;
+assign mac_core_txdatapath_cdc_produce_rdomain = multiregimpl1_regs1;
+assign mac_core_txdatapath_cdc_consume_wdomain = multiregimpl2_regs1;
+assign mac_core_pulsesynchronizer0_toggle_o = multiregimpl3_regs1;
+assign mac_core_pulsesynchronizer1_toggle_o = multiregimpl4_regs1;
+assign mac_core_cdc_produce_rdomain = multiregimpl5_regs1;
+assign mac_core_cdc_consume_wdomain = multiregimpl6_regs1;
 
 
 //------------------------------------------------------------------------------
@@ -7738,8 +7738,8 @@ always @(posedge eth_rx_clk) begin
         liteethmac_rxdatapath_liteethmacpreamblechecker_state <= 1'd0;
         liteethmac_rxdatapath_bufferizeendpoints_state <= 2'd0;
     end
-    multiregimpl60 <= mac_core_cdc_graycounter1_q;
-    multiregimpl61 <= multiregimpl60;
+    multiregimpl6_regs0 <= mac_core_cdc_graycounter1_q;
+    multiregimpl6_regs1 <= multiregimpl6_regs0;
 end
 
 always @(posedge eth_tx_clk) begin
@@ -7753,10 +7753,10 @@ always @(posedge eth_tx_clk) begin
     if (mac_core_tx_padding_counter_liteethmac_clockdomainsrenamer0_next_value_ce) begin
         mac_core_tx_padding_counter <= mac_core_tx_padding_counter_liteethmac_clockdomainsrenamer0_next_value;
     end
-    if (mac_core_tx_crc_is_ongoing0) begin
+    if (mac_core_tx_crc_fsm_is_ongoing0) begin
         mac_core_tx_crc_cnt <= 2'd3;
     end else begin
-        if ((mac_core_tx_crc_is_ongoing1 & (~mac_core_tx_crc_cnt_done))) begin
+        if ((mac_core_tx_crc_fsm_is_ongoing1 & (~mac_core_tx_crc_cnt_done))) begin
             mac_core_tx_crc_cnt <= (mac_core_tx_crc_cnt - mac_core_tx_crc_source_ready);
         end
     end
@@ -7767,11 +7767,11 @@ always @(posedge eth_tx_clk) begin
         mac_core_tx_crc_reg <= 32'd4294967295;
     end
     liteethmac_txdatapath_bufferizeendpoints_state <= liteethmac_txdatapath_bufferizeendpoints_next_state;
-    if (mac_core_tx_crc_crc_packet_liteethmac_clockdomainsrenamer1_next_value_ce0) begin
-        mac_core_tx_crc_crc_packet <= mac_core_tx_crc_crc_packet_liteethmac_clockdomainsrenamer1_next_value0;
+    if (mac_core_tx_crc_description_liteethmac_clockdomainsrenamer1_next_value_ce0) begin
+        mac_core_tx_crc_description <= mac_core_tx_crc_description_liteethmac_clockdomainsrenamer1_next_value0;
     end
-    if (mac_core_tx_crc_last_be_liteethmac_clockdomainsrenamer1_next_value_ce1) begin
-        mac_core_tx_crc_last_be <= mac_core_tx_crc_last_be_liteethmac_clockdomainsrenamer1_next_value1;
+    if (mac_core_tx_crc_fsm_liteethmac_clockdomainsrenamer1_next_value_ce1) begin
+        mac_core_tx_crc_fsm <= mac_core_tx_crc_fsm_liteethmac_clockdomainsrenamer1_next_value1;
     end
     if (((~mac_core_tx_crc_pipe_valid_source_valid) | mac_core_tx_crc_pipe_valid_source_ready)) begin
         mac_core_tx_crc_pipe_valid_source_valid <= mac_core_tx_crc_pipe_valid_sink_valid;
@@ -7805,8 +7805,8 @@ always @(posedge eth_tx_clk) begin
         liteethmac_txdatapath_liteethmacpreambleinserter_state <= 2'd0;
         liteethmac_txdatapath_liteethmacgap_state <= 1'd0;
     end
-    multiregimpl10 <= mac_core_txdatapath_cdc_graycounter0_q;
-    multiregimpl11 <= multiregimpl10;
+    multiregimpl1_regs0 <= mac_core_txdatapath_cdc_graycounter0_q;
+    multiregimpl1_regs1 <= multiregimpl1_regs0;
 end
 
 always @(posedge por_clk) begin
@@ -8874,16 +8874,16 @@ always @(posedge sys_clk) begin
         liteethudpstreamer1_state <= 1'd0;
         wishbone2csr_state <= 1'd0;
     end
-    multiregimpl00 <= ethphy_data_r;
-    multiregimpl01 <= multiregimpl00;
-    multiregimpl20 <= mac_core_txdatapath_cdc_graycounter1_q;
-    multiregimpl21 <= multiregimpl20;
-    multiregimpl30 <= mac_core_pulsesynchronizer0_toggle_i;
-    multiregimpl31 <= multiregimpl30;
-    multiregimpl40 <= mac_core_pulsesynchronizer1_toggle_i;
-    multiregimpl41 <= multiregimpl40;
-    multiregimpl50 <= mac_core_cdc_graycounter0_q;
-    multiregimpl51 <= multiregimpl50;
+    multiregimpl0_regs0 <= ethphy_data_r;
+    multiregimpl0_regs1 <= multiregimpl0_regs0;
+    multiregimpl2_regs0 <= mac_core_txdatapath_cdc_graycounter1_q;
+    multiregimpl2_regs1 <= multiregimpl2_regs0;
+    multiregimpl3_regs0 <= mac_core_pulsesynchronizer0_toggle_i;
+    multiregimpl3_regs1 <= multiregimpl3_regs0;
+    multiregimpl4_regs0 <= mac_core_pulsesynchronizer1_toggle_i;
+    multiregimpl4_regs1 <= multiregimpl4_regs0;
+    multiregimpl5_regs0 <= mac_core_cdc_graycounter0_q;
+    multiregimpl5_regs1 <= multiregimpl5_regs0;
 end
 
 
@@ -9478,5 +9478,5 @@ TRELLIS_IO #(
 endmodule
 
 // -----------------------------------------------------------------------------
-//  Auto-Generated by LiteX on 2026-01-07 21:50:06.
+//  Auto-Generated by LiteX on 2026-01-16 02:10:12.
 //------------------------------------------------------------------------------

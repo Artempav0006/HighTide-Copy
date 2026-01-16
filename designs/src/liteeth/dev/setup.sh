@@ -44,9 +44,9 @@ else
     pip install --upgrade pip==25.1.1 --no-cache-dir
 fi
 
-echo "Checking and installing Python packages..."
+echo "Checking Python packages..."
 
-if check_package yaml; then
+if check_package PyYAML; then
     echo "Installing PyYAML..."
     pip install --no-cache-dir pyyaml==6.0.2
 fi

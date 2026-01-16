@@ -7,8 +7,6 @@ export USE_XILINX = 1
 
 -include $(BENCH_DESIGN_HOME)/src/liteeth/verilog.mk
 
-$(eval $(call build,axi-lite-mii.yml,mac_axi_mii.patch))
-
 export SDC_FILE            = $(PLATFORM_DESIGN_DIR)/$(DESIGN_NAME)/constraint.sdc
 
 export ADDITIONAL_LEFS = \

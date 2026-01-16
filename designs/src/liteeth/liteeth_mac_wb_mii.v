@@ -8,8 +8,8 @@
 //
 // Filename   : liteeth_core.v
 // Device     : 
-// LiteX sha1 : 1629e49
-// Date       : 2026-01-07 21:36:16
+// LiteX sha1 : 1d28199
+// Date       : 2026-01-16 02:06:42
 //------------------------------------------------------------------------------
 
 `timescale 1ns / 1ps
@@ -573,18 +573,18 @@ reg           core_tx_crc_ce = 1'd0;
 reg     [1:0] core_tx_crc_cnt = 2'd3;
 wire          core_tx_crc_cnt_done;
 reg    [31:0] core_tx_crc_crc_next = 32'd0;
-reg    [31:0] core_tx_crc_crc_packet = 32'd0;
-reg    [31:0] core_tx_crc_crc_packet_clockdomainsrenamer1_next_value0 = 32'd0;
-reg           core_tx_crc_crc_packet_clockdomainsrenamer1_next_value_ce0 = 1'd0;
 wire   [31:0] core_tx_crc_crc_prev;
 wire    [7:0] core_tx_crc_data0;
 wire    [7:0] core_tx_crc_data1;
+reg    [31:0] core_tx_crc_description = 32'd0;
+reg    [31:0] core_tx_crc_description_clockdomainsrenamer1_next_value0 = 32'd0;
+reg           core_tx_crc_description_clockdomainsrenamer1_next_value_ce0 = 1'd0;
 reg           core_tx_crc_error = 1'd0;
-reg           core_tx_crc_is_ongoing0 = 1'd0;
-reg           core_tx_crc_is_ongoing1 = 1'd0;
-reg           core_tx_crc_last_be = 1'd0;
-reg           core_tx_crc_last_be_clockdomainsrenamer1_next_value1 = 1'd0;
-reg           core_tx_crc_last_be_clockdomainsrenamer1_next_value_ce1 = 1'd0;
+reg           core_tx_crc_fsm = 1'd0;
+reg           core_tx_crc_fsm_clockdomainsrenamer1_next_value1 = 1'd0;
+reg           core_tx_crc_fsm_clockdomainsrenamer1_next_value_ce1 = 1'd0;
+reg           core_tx_crc_fsm_is_ongoing0 = 1'd0;
+reg           core_tx_crc_fsm_is_ongoing1 = 1'd0;
 wire          core_tx_crc_pipe_valid_sink_first;
 wire          core_tx_crc_pipe_valid_sink_last;
 wire    [7:0] core_tx_crc_pipe_valid_sink_payload_data;
@@ -934,6 +934,7 @@ reg           maccore_scratch_re = 1'd0;
 reg    [31:0] maccore_scratch_storage = 32'd305419896;
 reg           maccore_soc_rst = 1'd0;
 wire          maccore_w;
+reg     [2:0] master = 3'd0;
 reg           next_state = 1'd0;
 wire          por_clk;
 wire          re;
@@ -963,8 +964,7 @@ wire          shared_err;
 wire    [3:0] shared_sel;
 wire          shared_stb;
 wire          shared_we;
-reg     [2:0] slave_sel = 3'd0;
-reg     [2:0] slave_sel_r = 3'd0;
+reg     [2:0] slaves = 3'd0;
 reg           state = 1'd0;
 (* dont_touch = "true" *)
 wire          sys_clk;
@@ -1014,10 +1014,10 @@ wire          wishbone_interface_bus_tx_err;
 wire    [3:0] wishbone_interface_bus_tx_sel;
 wire          wishbone_interface_bus_tx_stb;
 wire          wishbone_interface_bus_tx_we;
-reg     [1:0] wishbone_interface_decoder0_slave_sel = 2'd0;
-reg     [1:0] wishbone_interface_decoder0_slave_sel_r = 2'd0;
-reg     [1:0] wishbone_interface_decoder1_slave_sel = 2'd0;
-reg     [1:0] wishbone_interface_decoder1_slave_sel_r = 2'd0;
+reg     [1:0] wishbone_interface_decoder0_master = 2'd0;
+reg     [1:0] wishbone_interface_decoder0_slaves = 2'd0;
+reg     [1:0] wishbone_interface_decoder1_master = 2'd0;
+reg     [1:0] wishbone_interface_decoder1_slaves = 2'd0;
 wire          wishbone_interface_ev_irq;
 reg           wishbone_interface_interface0_ack = 1'd0;
 wire   [29:0] wishbone_interface_interface0_adr;
@@ -1269,33 +1269,33 @@ wire          wishbone_interface_writer_status_we;
 wire   [31:0] wishbone_interface_writer_wr_data;
 reg           wishbone_interface_writer_write = 1'd0;
 (* async_reg = "true", mr_ff = "true", dont_touch = "true" *)
-reg           xilinxmultiregimpl00 = 1'd0;
+reg           xilinxmultiregimpl0_regs0 = 1'd0;
 (* async_reg = "true", dont_touch = "true" *)
-reg           xilinxmultiregimpl01 = 1'd0;
+reg           xilinxmultiregimpl0_regs1 = 1'd0;
 (* async_reg = "true", mr_ff = "true", dont_touch = "true" *)
-reg     [5:0] xilinxmultiregimpl10 = 6'd0;
+reg     [5:0] xilinxmultiregimpl1_regs0 = 6'd0;
 (* async_reg = "true", dont_touch = "true" *)
-reg     [5:0] xilinxmultiregimpl11 = 6'd0;
+reg     [5:0] xilinxmultiregimpl1_regs1 = 6'd0;
 (* async_reg = "true", mr_ff = "true", dont_touch = "true" *)
-reg     [5:0] xilinxmultiregimpl20 = 6'd0;
+reg     [5:0] xilinxmultiregimpl2_regs0 = 6'd0;
 (* async_reg = "true", dont_touch = "true" *)
-reg     [5:0] xilinxmultiregimpl21 = 6'd0;
+reg     [5:0] xilinxmultiregimpl2_regs1 = 6'd0;
 (* async_reg = "true", mr_ff = "true", dont_touch = "true" *)
-reg           xilinxmultiregimpl30 = 1'd0;
+reg           xilinxmultiregimpl3_regs0 = 1'd0;
 (* async_reg = "true", dont_touch = "true" *)
-reg           xilinxmultiregimpl31 = 1'd0;
+reg           xilinxmultiregimpl3_regs1 = 1'd0;
 (* async_reg = "true", mr_ff = "true", dont_touch = "true" *)
-reg           xilinxmultiregimpl40 = 1'd0;
+reg           xilinxmultiregimpl4_regs0 = 1'd0;
 (* async_reg = "true", dont_touch = "true" *)
-reg           xilinxmultiregimpl41 = 1'd0;
+reg           xilinxmultiregimpl4_regs1 = 1'd0;
 (* async_reg = "true", mr_ff = "true", dont_touch = "true" *)
-reg     [5:0] xilinxmultiregimpl50 = 6'd0;
+reg     [5:0] xilinxmultiregimpl5_regs0 = 6'd0;
 (* async_reg = "true", dont_touch = "true" *)
-reg     [5:0] xilinxmultiregimpl51 = 6'd0;
+reg     [5:0] xilinxmultiregimpl5_regs1 = 6'd0;
 (* async_reg = "true", mr_ff = "true", dont_touch = "true" *)
-reg     [5:0] xilinxmultiregimpl60 = 6'd0;
+reg     [5:0] xilinxmultiregimpl6_regs0 = 6'd0;
 (* async_reg = "true", dont_touch = "true" *)
-reg     [5:0] xilinxmultiregimpl61 = 6'd0;
+reg     [5:0] xilinxmultiregimpl6_regs1 = 6'd0;
 
 //------------------------------------------------------------------------------
 // Combinatorial Logic
@@ -1328,10 +1328,10 @@ assign wb_bus_err = (shared_err & (grant == 1'd0));
 assign request = {wb_bus_cyc};
 assign grant = 1'd0;
 always @(*) begin
-    slave_sel <= 3'd0;
-    slave_sel[0] <= (shared_adr[29:10] == 19'd327680);
-    slave_sel[1] <= (shared_adr[29:10] == 19'd327681);
-    slave_sel[2] <= (shared_adr[29:14] == 1'd0);
+    master <= 3'd0;
+    master[0] <= (shared_adr[29:10] == 19'd327680);
+    master[1] <= (shared_adr[29:10] == 19'd327681);
+    master[2] <= (shared_adr[29:14] == 1'd0);
 end
 assign wishbone_interface_bus_rx_adr = shared_adr;
 assign wishbone_interface_bus_rx_dat_w = shared_dat_w;
@@ -1354,9 +1354,9 @@ assign interface0_stb = shared_stb;
 assign interface0_we = shared_we;
 assign interface0_cti = shared_cti;
 assign interface0_bte = shared_bte;
-assign wishbone_interface_bus_rx_cyc = (shared_cyc & slave_sel[0]);
-assign wishbone_interface_bus_tx_cyc = (shared_cyc & slave_sel[1]);
-assign interface0_cyc = (shared_cyc & slave_sel[2]);
+assign wishbone_interface_bus_rx_cyc = (shared_cyc & master[0]);
+assign wishbone_interface_bus_tx_cyc = (shared_cyc & master[1]);
+assign interface0_cyc = (shared_cyc & master[2]);
 assign shared_err = ((wishbone_interface_bus_rx_err | wishbone_interface_bus_tx_err) | interface0_err);
 assign wait_1 = ((shared_stb & shared_cyc) & (~shared_ack));
 always @(*) begin
@@ -1364,7 +1364,7 @@ always @(*) begin
     shared_ack <= 1'd0;
     shared_dat_r <= 32'd0;
     shared_ack <= ((wishbone_interface_bus_rx_ack | wishbone_interface_bus_tx_ack) | interface0_ack);
-    shared_dat_r <= ((({32{slave_sel_r[0]}} & wishbone_interface_bus_rx_dat_r) | ({32{slave_sel_r[1]}} & wishbone_interface_bus_tx_dat_r)) | ({32{slave_sel_r[2]}} & interface0_dat_r));
+    shared_dat_r <= ((({32{slaves[0]}} & wishbone_interface_bus_rx_dat_r) | ({32{slaves[1]}} & wishbone_interface_bus_tx_dat_r)) | ({32{slaves[2]}} & interface0_dat_r));
     if (done) begin
         shared_dat_r <= 32'd4294967295;
         shared_ack <= 1'd1;
@@ -1716,12 +1716,12 @@ always @(*) begin
 end
 always @(*) begin
     core_tx_crc_ce <= 1'd0;
-    core_tx_crc_crc_packet_clockdomainsrenamer1_next_value0 <= 32'd0;
-    core_tx_crc_crc_packet_clockdomainsrenamer1_next_value_ce0 <= 1'd0;
-    core_tx_crc_is_ongoing0 <= 1'd0;
-    core_tx_crc_is_ongoing1 <= 1'd0;
-    core_tx_crc_last_be_clockdomainsrenamer1_next_value1 <= 1'd0;
-    core_tx_crc_last_be_clockdomainsrenamer1_next_value_ce1 <= 1'd0;
+    core_tx_crc_description_clockdomainsrenamer1_next_value0 <= 32'd0;
+    core_tx_crc_description_clockdomainsrenamer1_next_value_ce0 <= 1'd0;
+    core_tx_crc_fsm_clockdomainsrenamer1_next_value1 <= 1'd0;
+    core_tx_crc_fsm_clockdomainsrenamer1_next_value_ce1 <= 1'd0;
+    core_tx_crc_fsm_is_ongoing0 <= 1'd0;
+    core_tx_crc_fsm_is_ongoing1 <= 1'd0;
     core_tx_crc_reset <= 1'd0;
     core_tx_crc_sink_ready <= 1'd0;
     core_tx_crc_source_first <= 1'd0;
@@ -1757,14 +1757,14 @@ always @(*) begin
                 if ((1'd0 & (core_tx_crc_sink_payload_last_be <= 4'd15))) begin
                     txdatapath_bufferizeendpoints_next_state <= 1'd0;
                 end else begin
-                    core_tx_crc_crc_packet_clockdomainsrenamer1_next_value0 <= core_tx_crc_value;
-                    core_tx_crc_crc_packet_clockdomainsrenamer1_next_value_ce0 <= 1'd1;
+                    core_tx_crc_description_clockdomainsrenamer1_next_value0 <= core_tx_crc_value;
+                    core_tx_crc_description_clockdomainsrenamer1_next_value_ce0 <= 1'd1;
                     if (1'd0) begin
-                        core_tx_crc_last_be_clockdomainsrenamer1_next_value1 <= (core_tx_crc_sink_payload_last_be >>> 3'd4);
-                        core_tx_crc_last_be_clockdomainsrenamer1_next_value_ce1 <= 1'd1;
+                        core_tx_crc_fsm_clockdomainsrenamer1_next_value1 <= (core_tx_crc_sink_payload_last_be >>> 3'd4);
+                        core_tx_crc_fsm_clockdomainsrenamer1_next_value_ce1 <= 1'd1;
                     end else begin
-                        core_tx_crc_last_be_clockdomainsrenamer1_next_value1 <= core_tx_crc_sink_payload_last_be;
-                        core_tx_crc_last_be_clockdomainsrenamer1_next_value_ce1 <= 1'd1;
+                        core_tx_crc_fsm_clockdomainsrenamer1_next_value1 <= core_tx_crc_sink_payload_last_be;
+                        core_tx_crc_fsm_clockdomainsrenamer1_next_value_ce1 <= 1'd1;
                     end
                     txdatapath_bufferizeendpoints_next_state <= 2'd2;
                 end
@@ -1774,16 +1774,16 @@ always @(*) begin
             core_tx_crc_source_valid <= 1'd1;
             case (core_tx_crc_cnt)
                 1'd0: begin
-                    core_tx_crc_source_payload_data <= core_tx_crc_crc_packet[31:24];
+                    core_tx_crc_source_payload_data <= core_tx_crc_description[31:24];
                 end
                 1'd1: begin
-                    core_tx_crc_source_payload_data <= core_tx_crc_crc_packet[23:16];
+                    core_tx_crc_source_payload_data <= core_tx_crc_description[23:16];
                 end
                 2'd2: begin
-                    core_tx_crc_source_payload_data <= core_tx_crc_crc_packet[15:8];
+                    core_tx_crc_source_payload_data <= core_tx_crc_description[15:8];
                 end
                 default: begin
-                    core_tx_crc_source_payload_data <= core_tx_crc_crc_packet[7:0];
+                    core_tx_crc_source_payload_data <= core_tx_crc_description[7:0];
                 end
             endcase
             if (core_tx_crc_cnt_done) begin
@@ -1792,7 +1792,7 @@ always @(*) begin
                     txdatapath_bufferizeendpoints_next_state <= 1'd0;
                 end
             end
-            core_tx_crc_is_ongoing1 <= 1'd1;
+            core_tx_crc_fsm_is_ongoing1 <= 1'd1;
         end
         default: begin
             core_tx_crc_reset <= 1'd1;
@@ -1801,7 +1801,7 @@ always @(*) begin
                 core_tx_crc_sink_ready <= 1'd0;
                 txdatapath_bufferizeendpoints_next_state <= 1'd1;
             end
-            core_tx_crc_is_ongoing0 <= 1'd1;
+            core_tx_crc_fsm_is_ongoing0 <= 1'd1;
         end
     endcase
 end
@@ -2729,9 +2729,9 @@ assign wishbone_interface_interface0_dat_r = wishbone_interface_sram0_dat_r;
 assign wishbone_interface_sram1_adr = wishbone_interface_interface1_adr[8:0];
 assign wishbone_interface_interface1_dat_r = wishbone_interface_sram1_dat_r;
 always @(*) begin
-    wishbone_interface_decoder0_slave_sel <= 2'd0;
-    wishbone_interface_decoder0_slave_sel[0] <= (wishbone_interface_bus_rx_adr[9] == 1'd0);
-    wishbone_interface_decoder0_slave_sel[1] <= (wishbone_interface_bus_rx_adr[9] == 1'd1);
+    wishbone_interface_decoder0_master <= 2'd0;
+    wishbone_interface_decoder0_master[0] <= (wishbone_interface_bus_rx_adr[9] == 1'd0);
+    wishbone_interface_decoder0_master[1] <= (wishbone_interface_bus_rx_adr[9] == 1'd1);
 end
 assign wishbone_interface_interface0_adr = wishbone_interface_bus_rx_adr;
 assign wishbone_interface_interface0_dat_w = wishbone_interface_bus_rx_dat_w;
@@ -2747,11 +2747,11 @@ assign wishbone_interface_interface1_stb = wishbone_interface_bus_rx_stb;
 assign wishbone_interface_interface1_we = wishbone_interface_bus_rx_we;
 assign wishbone_interface_interface1_cti = wishbone_interface_bus_rx_cti;
 assign wishbone_interface_interface1_bte = wishbone_interface_bus_rx_bte;
-assign wishbone_interface_interface0_cyc = (wishbone_interface_bus_rx_cyc & wishbone_interface_decoder0_slave_sel[0]);
-assign wishbone_interface_interface1_cyc = (wishbone_interface_bus_rx_cyc & wishbone_interface_decoder0_slave_sel[1]);
+assign wishbone_interface_interface0_cyc = (wishbone_interface_bus_rx_cyc & wishbone_interface_decoder0_master[0]);
+assign wishbone_interface_interface1_cyc = (wishbone_interface_bus_rx_cyc & wishbone_interface_decoder0_master[1]);
 assign wishbone_interface_bus_rx_ack = (wishbone_interface_interface0_ack | wishbone_interface_interface1_ack);
 assign wishbone_interface_bus_rx_err = (wishbone_interface_interface0_err | wishbone_interface_interface1_err);
-assign wishbone_interface_bus_rx_dat_r = (({32{wishbone_interface_decoder0_slave_sel_r[0]}} & wishbone_interface_interface0_dat_r) | ({32{wishbone_interface_decoder0_slave_sel_r[1]}} & wishbone_interface_interface1_dat_r));
+assign wishbone_interface_bus_rx_dat_r = (({32{wishbone_interface_decoder0_slaves[0]}} & wishbone_interface_interface0_dat_r) | ({32{wishbone_interface_decoder0_slaves[1]}} & wishbone_interface_interface1_dat_r));
 always @(*) begin
     wishbone_interface_sram2_we <= 4'd0;
     wishbone_interface_sram2_we[0] <= (((wishbone_interface_interface2_cyc & wishbone_interface_interface2_stb) & wishbone_interface_interface2_we) & wishbone_interface_interface2_sel[0]);
@@ -2773,9 +2773,9 @@ assign wishbone_interface_sram3_adr = wishbone_interface_interface3_adr[8:0];
 assign wishbone_interface_interface3_dat_r = wishbone_interface_sram3_dat_r;
 assign wishbone_interface_sram3_dat_w = wishbone_interface_interface3_dat_w;
 always @(*) begin
-    wishbone_interface_decoder1_slave_sel <= 2'd0;
-    wishbone_interface_decoder1_slave_sel[0] <= (wishbone_interface_bus_tx_adr[9] == 1'd0);
-    wishbone_interface_decoder1_slave_sel[1] <= (wishbone_interface_bus_tx_adr[9] == 1'd1);
+    wishbone_interface_decoder1_master <= 2'd0;
+    wishbone_interface_decoder1_master[0] <= (wishbone_interface_bus_tx_adr[9] == 1'd0);
+    wishbone_interface_decoder1_master[1] <= (wishbone_interface_bus_tx_adr[9] == 1'd1);
 end
 assign wishbone_interface_interface2_adr = wishbone_interface_bus_tx_adr;
 assign wishbone_interface_interface2_dat_w = wishbone_interface_bus_tx_dat_w;
@@ -2791,11 +2791,11 @@ assign wishbone_interface_interface3_stb = wishbone_interface_bus_tx_stb;
 assign wishbone_interface_interface3_we = wishbone_interface_bus_tx_we;
 assign wishbone_interface_interface3_cti = wishbone_interface_bus_tx_cti;
 assign wishbone_interface_interface3_bte = wishbone_interface_bus_tx_bte;
-assign wishbone_interface_interface2_cyc = (wishbone_interface_bus_tx_cyc & wishbone_interface_decoder1_slave_sel[0]);
-assign wishbone_interface_interface3_cyc = (wishbone_interface_bus_tx_cyc & wishbone_interface_decoder1_slave_sel[1]);
+assign wishbone_interface_interface2_cyc = (wishbone_interface_bus_tx_cyc & wishbone_interface_decoder1_master[0]);
+assign wishbone_interface_interface3_cyc = (wishbone_interface_bus_tx_cyc & wishbone_interface_decoder1_master[1]);
 assign wishbone_interface_bus_tx_ack = (wishbone_interface_interface2_ack | wishbone_interface_interface3_ack);
 assign wishbone_interface_bus_tx_err = (wishbone_interface_interface2_err | wishbone_interface_interface3_err);
-assign wishbone_interface_bus_tx_dat_r = (({32{wishbone_interface_decoder1_slave_sel_r[0]}} & wishbone_interface_interface2_dat_r) | ({32{wishbone_interface_decoder1_slave_sel_r[1]}} & wishbone_interface_interface3_dat_r));
+assign wishbone_interface_bus_tx_dat_r = (({32{wishbone_interface_decoder1_slaves[0]}} & wishbone_interface_interface2_dat_r) | ({32{wishbone_interface_decoder1_slaves[1]}} & wishbone_interface_interface3_dat_r));
 always @(*) begin
     interface0_ack <= 1'd0;
     interface0_dat_r <= 32'd0;
@@ -3169,14 +3169,14 @@ end
 always @(*) begin
     maccore__r_status <= 1'd0;
     maccore__r_status <= maccore_r;
-    maccore__r_status <= xilinxmultiregimpl01;
+    maccore__r_status <= xilinxmultiregimpl0_regs1;
 end
-assign core_tx_cdc_cdc_produce_rdomain = xilinxmultiregimpl11;
-assign core_tx_cdc_cdc_consume_wdomain = xilinxmultiregimpl21;
-assign core_pulsesynchronizer0_toggle_o = xilinxmultiregimpl31;
-assign core_pulsesynchronizer1_toggle_o = xilinxmultiregimpl41;
-assign core_rx_cdc_cdc_produce_rdomain = xilinxmultiregimpl51;
-assign core_rx_cdc_cdc_consume_wdomain = xilinxmultiregimpl61;
+assign core_tx_cdc_cdc_produce_rdomain = xilinxmultiregimpl1_regs1;
+assign core_tx_cdc_cdc_consume_wdomain = xilinxmultiregimpl2_regs1;
+assign core_pulsesynchronizer0_toggle_o = xilinxmultiregimpl3_regs1;
+assign core_pulsesynchronizer1_toggle_o = xilinxmultiregimpl4_regs1;
+assign core_rx_cdc_cdc_produce_rdomain = xilinxmultiregimpl5_regs1;
+assign core_rx_cdc_cdc_consume_wdomain = xilinxmultiregimpl6_regs1;
 
 
 //------------------------------------------------------------------------------
@@ -3368,8 +3368,8 @@ always @(posedge eth_rx_clk) begin
         rxdatapath_liteethmacpreamblechecker_state <= 1'd0;
         rxdatapath_bufferizeendpoints_state <= 2'd0;
     end
-    xilinxmultiregimpl60 <= core_rx_cdc_cdc_graycounter1_q;
-    xilinxmultiregimpl61 <= xilinxmultiregimpl60;
+    xilinxmultiregimpl6_regs0 <= core_rx_cdc_cdc_graycounter1_q;
+    xilinxmultiregimpl6_regs1 <= xilinxmultiregimpl6_regs0;
 end
 
 always @(posedge eth_tx_clk) begin
@@ -3396,10 +3396,10 @@ always @(posedge eth_tx_clk) begin
     if (core_tx_padding_counter_clockdomainsrenamer0_next_value_ce) begin
         core_tx_padding_counter <= core_tx_padding_counter_clockdomainsrenamer0_next_value;
     end
-    if (core_tx_crc_is_ongoing0) begin
+    if (core_tx_crc_fsm_is_ongoing0) begin
         core_tx_crc_cnt <= 2'd3;
     end else begin
-        if ((core_tx_crc_is_ongoing1 & (~core_tx_crc_cnt_done))) begin
+        if ((core_tx_crc_fsm_is_ongoing1 & (~core_tx_crc_cnt_done))) begin
             core_tx_crc_cnt <= (core_tx_crc_cnt - core_tx_crc_source_ready);
         end
     end
@@ -3410,11 +3410,11 @@ always @(posedge eth_tx_clk) begin
         core_tx_crc_reg <= 32'd4294967295;
     end
     txdatapath_bufferizeendpoints_state <= txdatapath_bufferizeendpoints_next_state;
-    if (core_tx_crc_crc_packet_clockdomainsrenamer1_next_value_ce0) begin
-        core_tx_crc_crc_packet <= core_tx_crc_crc_packet_clockdomainsrenamer1_next_value0;
+    if (core_tx_crc_description_clockdomainsrenamer1_next_value_ce0) begin
+        core_tx_crc_description <= core_tx_crc_description_clockdomainsrenamer1_next_value0;
     end
-    if (core_tx_crc_last_be_clockdomainsrenamer1_next_value_ce1) begin
-        core_tx_crc_last_be <= core_tx_crc_last_be_clockdomainsrenamer1_next_value1;
+    if (core_tx_crc_fsm_clockdomainsrenamer1_next_value_ce1) begin
+        core_tx_crc_fsm <= core_tx_crc_fsm_clockdomainsrenamer1_next_value1;
     end
     if (((~core_tx_crc_pipe_valid_source_valid) | core_tx_crc_pipe_valid_source_ready)) begin
         core_tx_crc_pipe_valid_source_valid <= core_tx_crc_pipe_valid_sink_valid;
@@ -3450,8 +3450,8 @@ always @(posedge eth_tx_clk) begin
         txdatapath_liteethmacpreambleinserter_state <= 2'd0;
         txdatapath_liteethmacgap_state <= 1'd0;
     end
-    xilinxmultiregimpl10 <= core_tx_cdc_cdc_graycounter0_q;
-    xilinxmultiregimpl11 <= xilinxmultiregimpl10;
+    xilinxmultiregimpl1_regs0 <= core_tx_cdc_cdc_graycounter0_q;
+    xilinxmultiregimpl1_regs1 <= xilinxmultiregimpl1_regs0;
 end
 
 always @(posedge por_clk) begin
@@ -3459,7 +3459,7 @@ always @(posedge por_clk) begin
 end
 
 always @(posedge sys_clk) begin
-    slave_sel_r <= slave_sel;
+    slaves <= master;
     if (wait_1) begin
         if ((~done)) begin
             count <= (count - 1'd1);
@@ -3545,7 +3545,7 @@ always @(posedge sys_clk) begin
     if (((wishbone_interface_interface1_cyc & wishbone_interface_interface1_stb) & ((~wishbone_interface_interface1_ack) | wishbone_interface_sram1_adr_burst))) begin
         wishbone_interface_interface1_ack <= 1'd1;
     end
-    wishbone_interface_decoder0_slave_sel_r <= wishbone_interface_decoder0_slave_sel;
+    wishbone_interface_decoder0_slaves <= wishbone_interface_decoder0_master;
     wishbone_interface_interface2_ack <= 1'd0;
     if (((wishbone_interface_interface2_cyc & wishbone_interface_interface2_stb) & ((~wishbone_interface_interface2_ack) | wishbone_interface_sram2_adr_burst))) begin
         wishbone_interface_interface2_ack <= 1'd1;
@@ -3554,7 +3554,7 @@ always @(posedge sys_clk) begin
     if (((wishbone_interface_interface3_cyc & wishbone_interface_interface3_stb) & ((~wishbone_interface_interface3_ack) | wishbone_interface_sram3_adr_burst))) begin
         wishbone_interface_interface3_ack <= 1'd1;
     end
-    wishbone_interface_decoder1_slave_sel_r <= wishbone_interface_decoder1_slave_sel;
+    wishbone_interface_decoder1_slaves <= wishbone_interface_decoder1_master;
     state <= next_state;
     interface0_bank_bus_dat_r <= 1'd0;
     if (csrbank0_sel) begin
@@ -3744,26 +3744,26 @@ always @(posedge sys_clk) begin
         wishbone_interface_reader_cmd_fifo_consume <= 1'd0;
         wishbone_interface_interface0_ack <= 1'd0;
         wishbone_interface_interface1_ack <= 1'd0;
-        wishbone_interface_decoder0_slave_sel_r <= 2'd0;
+        wishbone_interface_decoder0_slaves <= 2'd0;
         wishbone_interface_interface2_ack <= 1'd0;
         wishbone_interface_interface3_ack <= 1'd0;
-        wishbone_interface_decoder1_slave_sel_r <= 2'd0;
-        slave_sel_r <= 3'd0;
+        wishbone_interface_decoder1_slaves <= 2'd0;
+        slaves <= 3'd0;
         count <= 20'd1000000;
         liteethmacsramwriter_state <= 3'd0;
         liteethmacsramreader_state <= 2'd0;
         state <= 1'd0;
     end
-    xilinxmultiregimpl00 <= maccore_data_r;
-    xilinxmultiregimpl01 <= xilinxmultiregimpl00;
-    xilinxmultiregimpl20 <= core_tx_cdc_cdc_graycounter1_q;
-    xilinxmultiregimpl21 <= xilinxmultiregimpl20;
-    xilinxmultiregimpl30 <= core_pulsesynchronizer0_toggle_i;
-    xilinxmultiregimpl31 <= xilinxmultiregimpl30;
-    xilinxmultiregimpl40 <= core_pulsesynchronizer1_toggle_i;
-    xilinxmultiregimpl41 <= xilinxmultiregimpl40;
-    xilinxmultiregimpl50 <= core_rx_cdc_cdc_graycounter0_q;
-    xilinxmultiregimpl51 <= xilinxmultiregimpl50;
+    xilinxmultiregimpl0_regs0 <= maccore_data_r;
+    xilinxmultiregimpl0_regs1 <= xilinxmultiregimpl0_regs0;
+    xilinxmultiregimpl2_regs0 <= core_tx_cdc_cdc_graycounter1_q;
+    xilinxmultiregimpl2_regs1 <= xilinxmultiregimpl2_regs0;
+    xilinxmultiregimpl3_regs0 <= core_pulsesynchronizer0_toggle_i;
+    xilinxmultiregimpl3_regs1 <= xilinxmultiregimpl3_regs0;
+    xilinxmultiregimpl4_regs0 <= core_pulsesynchronizer1_toggle_i;
+    xilinxmultiregimpl4_regs1 <= xilinxmultiregimpl4_regs0;
+    xilinxmultiregimpl5_regs0 <= core_rx_cdc_cdc_graycounter0_q;
+    xilinxmultiregimpl5_regs1 <= xilinxmultiregimpl5_regs0;
 end
 
 
@@ -4021,5 +4021,5 @@ FDPE #(
 endmodule
 
 // -----------------------------------------------------------------------------
-//  Auto-Generated by LiteX on 2026-01-07 21:36:16.
+//  Auto-Generated by LiteX on 2026-01-16 02:06:43.
 //------------------------------------------------------------------------------
