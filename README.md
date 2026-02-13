@@ -1,4 +1,4 @@
-# UCSC_ML_suite
+# HighTide
 
 1. Clone this repository:
 
@@ -9,7 +9,7 @@ git clone git@github.com:VLSIDA/HighTide.git
 2. Run the setup to clone ORFS as a submodule and link the settings:
 
 ```bash
-cd UCSC_ML_suite
+cd HighTide
 ./setup.sh
 
 ```
