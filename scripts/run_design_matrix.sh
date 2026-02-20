@@ -25,10 +25,16 @@ for cfg in "${configs[@]}"; do
   outdir="ci_results/${safe}"
   mkdir -p "$outdir"
 
-  docker run --rm \
-    -v "$PWD:/work" \
-    -w /work/OpenROAD-flow-scripts/flow \
-    openroad/orfs:"$tag" \
+  docker run --rm -it \
+    -u $(id -u ${USER}):$(id -g ${USER}) \
+    -v $(pwd)/flow:/OpenROAD-flow-scripts/flow \
+    -v $(pwd)/..:/OpenROAD-flow-scripts/UCSC_ML_suite \
+    -w /OpenROAD-flow-scripts/UCSC_ML_suite \
+    -v /tmp/.X11-unix:/tmp/.X11-unix \
+    -v ${HOME}/.Xauthority:/.Xauthority \
+    --network host \
+    --security-opt seccomp=unconfined \
+    openroad/orfs:${tag}
     bash -lc "make DESIGN_CONFIG=/work/$cfg" | tee "$outdir/log.txt"
 
   # Collect whatever metrics ORFS produces (adjust to your actual outputs)
