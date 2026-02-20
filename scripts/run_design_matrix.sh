@@ -27,7 +27,7 @@ for cfg in "${configs[@]}"; do
 
   docker run --rm \
     -v "$PWD:/work" \
-    -w /work/OpenROAD-flow-scripts/flow
+    -w /work/OpenROAD-flow-scripts/flow \
     openroad/orfs:"$tag" \
     bash -lc "make DESIGN_CONFIG=/work/$cfg" | tee "$outdir/log.txt"
 
