@@ -1,4 +1,4 @@
-name: Design push - submodule update report
+name: Design pipeline (report -> ORFS)
 
 on:
   push:
@@ -6,10 +6,7 @@ on:
     paths:
       - "designs/**"
       - ".gitmodules"
-      - "Makefile"
-      - "settings.mk"
-      - "setup.sh"
-      - "runorfs.sh"
+      - ".github/workflows/**"
   workflow_dispatch: {}
 
 permissions:
@@ -19,12 +16,10 @@ permissions:
 jobs:
   report:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout (with submodules)
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
-          submodules: true
+          submodules: true   # NOT recursive (avoids your verilator issue)
 
       - name: Generate submodule update report
         run: bash scripts/check_submodules.sh
@@ -39,3 +34,20 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: bash scripts/post_report_issue.sh
+
+  run_designs:
+    needs: report
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Run ORFS designs
+        run: bash scripts/run_design_matrix.sh
+
+      - name: Upload ORFS results
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci-results
+          path: ci_results
