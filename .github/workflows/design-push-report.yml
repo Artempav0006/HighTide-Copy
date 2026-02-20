@@ -24,7 +24,7 @@ jobs:
       - name: Checkout (with submodules)
         uses: actions/checkout@v4
         with:
-          submodules: recursive
+          submodules: true
 
       - name: Generate submodule update report
         run: bash scripts/check_submodules.sh
