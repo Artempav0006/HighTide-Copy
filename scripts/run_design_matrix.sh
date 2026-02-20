@@ -27,9 +27,9 @@ for cfg in "${configs[@]}"; do
 
   docker run --rm \
     -v "$PWD:/work" \
-    -w /work \
+    -w /work/OpenROAD-flow-scripts/flow
     openroad/orfs:"$tag" \
-    bash -lc "make DESIGN_CONFIG=./$cfg" | tee "$outdir/log.txt"
+    bash -lc "make DESIGN_CONFIG=/work/$cfg" | tee "$outdir/log.txt"
 
   # Collect whatever metrics ORFS produces (adjust to your actual outputs)
   # Example: copy results folder if it exists
