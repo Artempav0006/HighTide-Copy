@@ -13,8 +13,8 @@ echo "" >> "$report"
 
 echo "## Submodules" >> "$report"
 echo "" >> "$report"
-echo "| Submodule | Pinned | Upstream | Status |" >> "$report"
-echo "|---|---:|---:|---|" >> "$report"
+echo "| Submodule | Pinned | Pinned date (UTC) | Upstream | Upstream date (UTC) | Status |" >> "$report"
+echo "|---|---:|---:|---:|---:|---|" >> "$report"
 
 # List submodules from git
 git submodule status --recursive | while read -r line; do
@@ -48,6 +48,8 @@ git submodule status --recursive | while read -r line; do
   fi
 
   upstream_sha="$(git -C "$path" rev-parse "$upstream_ref")"
+  pinned_date="$(git -C "$path" show -s --date=format:'%Y-%m-%d %H:%M:%S' --format='%cd' "$sha" 2>/dev/null || echo "?")"
+  upstream_date="$(git -C "$path" show -s --date=format:'%Y-%m-%d %H:%M:%S' --format='%cd' "$upstream_sha" 2>/dev/null || echo "?")"
 
   status="up-to-date"
   if [ "$sha" != "$upstream_sha" ]; then
@@ -59,10 +61,7 @@ git submodule status --recursive | while read -r line; do
     fi
   fi
 
-  echo "| $path | \`$sha\` | \`$upstream_sha\` | $status |" >> "$report"
+  echo "| $path | \`$sha\` | $pinned_date | \`$upstream_sha\` | $upstream_date | $status |" >> "$report"
 done
 
 echo "" >> "$report"
-echo "## Changed files in this push" >> "$report"
-echo "" >> "$report"
-git show --name-only --pretty="format:" "$GITHUB_SHA" | sed '/^$/d' | sed 's/^/- /' >> "$report"
