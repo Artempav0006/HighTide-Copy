@@ -1,0 +1,86 @@
+<style>
+  :root{
+    --OUTOFDATE : #f6cf66; /* OUTOFDATE is for designs which we haven't tracked the latest update to*/
+    --STATIC    : #cdcdcd; /* STATIC is for designs that won't be updated any longer */
+    --UPTODATE  : #53de5e; /* UPTODATE is for designs that have latest updates tracked*/
+    --RED       : #e13838; /* Do we need a red color for something else? */
+    --HEADER    : #ffffff;
+    --BORDER    : #000000;
+  }
+</style>
+<div class="hightide-key">
+  <div><span class="swatch outofdate"></span> Out of date (Design in suite does not track the most recent changes from source) </div>
+  <div><span class="swatch uptodate"></span> Up to date (Design in suite is tracked to most recent changes from source)</div>
+  <div><span class="swatch static"></span> Static (Design no longer receives updates)</div>
+</div>
+
+<style>
+  .hightide-key{
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 12px 0;
+    font-size: 0.95em;
+  }
+  .hightide-key .swatch{
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border: 1px solid var(--BORDER);
+    border-radius: 2px;
+    margin-right: 6px;
+    vertical-align: -1px;
+  }
+  .hightide-key .outofdate{ background: var(--OUTOFDATE); }
+  .hightide-key .uptodate { background: var(--UPTODATE); }
+  .hightide-key .static   { background: var(--STATIC); }
+</style>
+
+<div class="dated-table-widget">
+  <label for="tableDate">Select Suite Snapshot: </label>
+  <select id="tableDate">
+    <option value="02-16-2026">Latest</option>
+    <option value="02-09-2026">02-09-2026</option>
+    <option value="02-02-2026">02-02-2026</option>
+  </select>
+
+  <div class="table-version" data-date="02-16-2026">
+    {% include Table-02-16-26.html %}
+  </div>
+
+  <div class="table-version" data-date="02-09-2026" style="display:none;">
+    {% include Table-02-09-26.html %}
+  </div>
+    
+  <div class="table-version" data-date="02-02-2026" style="display:none;">
+    {% include Table-02-02-26.html %}
+  </div>
+</div>
+
+<script>
+  (function () {
+    const select = document.getElementById("tableDate");
+    const tables = Array.from(document.querySelectorAll(".dated-table-widget .table-version"));
+
+    function show(dateKey) {
+      tables.forEach(div => {
+        div.style.display = (div.dataset.date === dateKey) ? "block" : "none";
+      });
+    }
+
+    // set initial value from URL ?date=YYYY-MM-DD
+    const params = new URLSearchParams(window.location.search);
+    const initial = params.get("date") || select.value;
+    select.value = initial;
+    show(initial);
+
+    select.addEventListener("change", () => {
+      show(select.value);
+      // update URL without reloading
+      const url = new URL(window.location.href);
+      url.searchParams.set("date", select.value);
+      window.history.replaceState({}, "", url);
+    });
+  })();
+</script>

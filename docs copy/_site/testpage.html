@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>HighTide Homepage | bgoldbug.github.io</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="HighTide Homepage" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="http://localhost:4000/testpage.html" />
+<meta property="og:url" content="http://localhost:4000/testpage.html" />
+<meta property="og:site_name" content="bgoldbug.github.io" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="HighTide Homepage" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","headline":"HighTide Homepage","url":"http://localhost:4000/testpage.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="bgoldbug.github.io" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">bgoldbug.github.io</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/testpage.html">HighTide Homepage</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">HighTide Homepage</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="" itemprop="datePublished">
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>The HighTide design suite will track per-design statistics based on our design update snapshots.</p>
+
+<style>
+  :root{
+    --OUTOFDATE : #f6cf66; /* OUTOFDATE is for designs which we haven't tracked the latest update to*/
+    --STATIC    : #cdcdcd; /* STATIC is for designs that won't be updated any longer */
+    --UPTODATE  : #53de5e; /* UPTODATE is for designs that have latest updates tracked*/
+    --RED       : #e13838; /* Do we need a red color for something else? */
+    --HEADER    : #ffffff;
+    --BORDER    : #000000;
+  }
+</style>
+
+<div class="hightide-key">
+  <div><span class="swatch outofdate"></span> Out of date (Design in suite does not track the most recent changes from source) </div>
+  <div><span class="swatch uptodate"></span> Up to date (Design in suite is tracked to most recent changes from source)</div>
+  <div><span class="swatch static"></span> Static (Design no longer receives updates)</div>
+</div>
+
+<style>
+  .hightide-key{
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 12px 0;
+    font-size: 0.95em;
+  }
+  .hightide-key .swatch{
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border: 1px solid var(--BORDER);
+    border-radius: 2px;
+    margin-right: 6px;
+    vertical-align: -1px;
+  }
+  .hightide-key .outofdate{ background: var(--OUTOFDATE); }
+  .hightide-key .uptodate { background: var(--UPTODATE); }
+  .hightide-key .static   { background: var(--STATIC); }
+</style>
+
+<div class="dated-table-widget">
+  <label for="tableDate">Select Suite Snapshot: </label>
+  <select id="tableDate">
+    <option value="02-16-2026">Latest</option>
+    <option value="02-09-2026">02-09-2026</option>
+    <option value="02-02-2026">02-02-2026</option>
+  </select>
+
+  <div class="table-version" data-date="02-16-2026">
+    
+<table style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid var(--BORDER); padding: 8px; background: var(--HEADER);">
+        Design Name
+      </th>
+      <th style="border: 1px solid var(--BORDER); padding: 8px; background: var(--HEADER); text-align:center;">
+        Last Updated
+      </th>
+      <th style="border: 1px solid var(--BORDER); padding: 8px; background: var(--HEADER); text-align:center;">
+        Gate Ct
+      </th>
+      <th style="border: 1px solid var(--BORDER); padding: 8px; background: var(--HEADER); text-align:center;">
+        Clock Freq
+      </th>
+      <th style="border: 1px solid var(--BORDER); padding: 8px; background: var(--HEADER); text-align:center;">
+        Wirelength
+      </th>
+      <th style="border: 1px solid var(--BORDER); padding: 8px; background: var(--HEADER); text-align:center;">
+        Core Util
+      </th>
+      <th style="border: 1px solid var(--BORDER); padding: 8px; background: var(--HEADER); text-align:center;">
+        seq:comb Ratio
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; background: var(--OUTOFDATE);">
+        <a href="https://nvdla.org/">NVDLA</a>
+      </td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+    </tr>
+
+    <tr>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; background: var(--UPTODATE);">
+        <a href="https://github.com/enjoy-digital/liteeth">LiteEth</a>
+      </td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+    </tr>
+
+    <tr>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; background: var(--OUTOFDATE);">
+        <a href="https://github.com/NNgen/nngen">cnn</a>
+      </td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+    </tr>
+
+    <tr>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; background: var(--UPTODATE);">
+        <a href="https://github.com/google-coral/coralnpu">coralnpu</a>
+      </td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+    </tr>
+
+    <tr>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; background: var(--UPTODATE);">
+        <a href="https://github.com/jbush001/NyuziProcessor">NyuziProcessor</a>
+      </td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+    </tr>
+
+    <tr>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; background: var(--STATIC);">
+        <a href="https://github.com/gsmecher/minimax">Minimax</a>
+      </td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+    </tr>
+  </tbody>
+</table>
+
+  </div>
+
+  <div class="table-version" data-date="02-09-2026" style="display:none;">
+    <table style="border-collapse: collapse; width: 100%;">
+    <thead>
+        <tr>
+        <th style="border: 1px solid var(--BORDER); padding: 8px; background: var(--HEADER);">
+            Design Name
+        </th>
+        <th style="border: 1px solid var(--BORDER); padding: 8px; background: var(--HEADER); text-align:center;">
+            Last Updated
+        </th>
+        <th style="border: 1px solid var(--BORDER); padding: 8px; background: var(--HEADER); text-align:center;">
+            Gate Ct
+        </th>
+        <th style="border: 1px solid var(--BORDER); padding: 8px; background: var(--HEADER); text-align:center;">
+            Clock Freq
+        </th>
+        <th style="border: 1px solid var(--BORDER); padding: 8px; background: var(--HEADER); text-align:center;">
+            Wirelength
+        </th>
+        <th style="border: 1px solid var(--BORDER); padding: 8px; background: var(--HEADER); text-align:center;">
+            Core Util
+        </th>
+        <th style="border: 1px solid var(--BORDER); padding: 8px; background: var(--HEADER); text-align:center;">
+            seq:comb Ratio
+        </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <td style="border: 1px solid var(--BORDER); padding: 8px; background: var(--UPTODATE);">
+            <a href="https://nvdla.org/">NVDLA</a>
+        </td>
+        <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+        <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+        <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+        <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+        <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+        <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+        </tr>
+
+        <tr>
+        <td style="border: 1px solid var(--BORDER); padding: 8px; background: var(--UPTODATE);">
+            <a href="https://github.com/enjoy-digital/liteeth">LiteEth</a>
+        </td>
+        <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+        <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+        <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+        <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+        <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+        <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+        </tr>
+
+        <tr>
+        <td style="border: 1px solid var(--BORDER); padding: 8px; background: var(--OUTOFDATE);">
+            <a href="https://github.com/NNgen/nngen">cnn</a>
+        </td>
+        <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+        <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+        <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+        <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+        <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+        <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+        </tr>
+
+        <tr>
+        <td style="border: 1px solid var(--BORDER); padding: 8px; background: var(--UPTODATE);">
+            <a href="https://github.com/google-coral/coralnpu">coralnpu</a>
+        </td>
+        <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+        <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+        <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+        <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+        <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+        <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+        </tr>
+
+        <tr>
+        <td style="border: 1px solid var(--BORDER); padding: 8px; background: var(--UPTODATE);">
+            <a href="https://github.com/jbush001/NyuziProcessor">NyuziProcessor</a>
+        </td>
+        <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+        <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+        <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+        <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+        <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+        <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+        </tr>
+
+        <tr>
+        <td style="border: 1px solid var(--BORDER); padding: 8px; background: var(--STATIC);">
+            <a href="https://github.com/gsmecher/minimax">Minimax</a>
+        </td>
+        <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+        <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+        <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+        <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+        <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+        <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+        </tr>
+    </tbody>
+</table>
+
+  </div>
+    
+  <div class="table-version" data-date="02-02-2026" style="display:none;">
+    <table style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid var(--BORDER); padding: 8px; background: var(--HEADER);">
+        Design Name
+      </th>
+      <th style="border: 1px solid var(--BORDER); padding: 8px; background: var(--HEADER); text-align:center;">
+        Last Updated
+      </th>
+      <th style="border: 1px solid var(--BORDER); padding: 8px; background: var(--HEADER); text-align:center;">
+        Gate Ct
+      </th>
+      <th style="border: 1px solid var(--BORDER); padding: 8px; background: var(--HEADER); text-align:center;">
+        Clock Freq
+      </th>
+      <th style="border: 1px solid var(--BORDER); padding: 8px; background: var(--HEADER); text-align:center;">
+        Wirelength
+      </th>
+      <th style="border: 1px solid var(--BORDER); padding: 8px; background: var(--HEADER); text-align:center;">
+        Core Util
+      </th>
+      <th style="border: 1px solid var(--BORDER); padding: 8px; background: var(--HEADER); text-align:center;">
+        seq:comb Ratio
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; background: var(--UPTODATE);">
+        <a href="https://nvdla.org/">NVDLA</a>
+      </td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+    </tr>
+
+    <tr>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; background: var(--UPTODATE);">
+        <a href="https://github.com/enjoy-digital/liteeth">LiteEth</a>
+      </td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+    </tr>
+
+    <tr>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; background: var(--UPTODATE);">
+        <a href="https://github.com/NNgen/nngen">cnn</a>
+      </td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+    </tr>
+
+    <tr>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; background: var(--UPTODATE);">
+        <a href="https://github.com/google-coral/coralnpu">coralnpu</a>
+      </td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+    </tr>
+
+    <tr>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; background: var(--UPTODATE);">
+        <a href="https://github.com/jbush001/NyuziProcessor">NyuziProcessor</a>
+      </td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+    </tr>
+
+    <tr>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; background: var(--STATIC);">
+        <a href="https://github.com/gsmecher/minimax">Minimax</a>
+      </td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+      <td style="border: 1px solid var(--BORDER); padding: 8px; text-align: center; background: var(--HEADER);"></td>
+    </tr>
+  </tbody>
+</table>
+  </div>
+</div>
+
+<script>
+  (function () {
+    const select = document.getElementById("tableDate");
+    const tables = Array.from(document.querySelectorAll(".dated-table-widget .table-version"));
+
+    function show(dateKey) {
+      tables.forEach(div => {
+        div.style.display = (div.dataset.date === dateKey) ? "block" : "none";
+      });
+    }
+
+    // set initial value from URL ?date=YYYY-MM-DD
+    const params = new URLSearchParams(window.location.search);
+    const initial = params.get("date") || select.value;
+    select.value = initial;
+    show(initial);
+
+    select.addEventListener("change", () => {
+      show(select.value);
+      // update URL without reloading
+      const url = new URL(window.location.href);
+      url.searchParams.set("date", select.value);
+      window.history.replaceState({}, "", url);
+    });
+  })();
+</script>
+
+
+  </div><a class="u-url" href="/testpage.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">bgoldbug.github.io</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">bgoldbug.github.io</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p></p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
