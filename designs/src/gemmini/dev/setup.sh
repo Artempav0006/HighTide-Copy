@@ -4,9 +4,7 @@ set -euo pipefail
 cd -- "$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 
 # ── Install/locate JDK 11 ─────────────────────────────────────────────
-ROOT_DIR="$(cd ../../../.. && pwd)"
-PKG_ROOT="${ROOT_DIR}/packages"
-JDK_PREFIX="${PKG_ROOT}/openjdk-11"
+JDK_PREFIX="$(pwd)/openjdk-11"
 
 if [[ -x "${JDK_PREFIX}/bin/java" ]]; then
   echo "Using local JDK at ${JDK_PREFIX}"
@@ -25,30 +23,22 @@ if ! command -v java >/dev/null 2>&1 || { JAVA_VER=$(java -version 2>&1 | head -
   echo "Installing OpenJDK 11 locally..."
   TB_NAME="openjdk-11.0.2_linux-x64_bin.tar.gz"
   URL="https://download.java.net/java/GA/jdk11/9/GPL/${TB_NAME}"
-  TARBALLS="${PKG_ROOT}/_tarballs"
-  BUILD="${PKG_ROOT}/_build"
-  TB="${TARBALLS}/${TB_NAME}"
-  STAGE="${BUILD}/openjdk-11-stage"
+  TB="${JDK_PREFIX}/${TB_NAME}"
 
-  mkdir -p "${TARBALLS}" "${BUILD}"
+  mkdir -p "${JDK_PREFIX}"
 
   if [[ ! -f "${TB}" ]]; then
     curl -L --fail --retry 3 --retry-delay 2 -o "${TB}" "${URL}"
   fi
 
-  rm -rf "${STAGE}"
-  mkdir -p "${STAGE}"
-  tar -xzf "${TB}" -C "${STAGE}"
+  tar -xzf "${TB}" -C "${JDK_PREFIX}" --strip-components=1
 
-  JDK_DIR="$(ls -d "${STAGE}"/jdk-* 2>/dev/null | head -1)"
-  if [[ -z "${JDK_DIR}" || ! -d "${JDK_DIR}" ]]; then
-    echo "Error: Could not locate extracted JDK directory" >&2
+  if [[ ! -x "${JDK_PREFIX}/bin/java" ]]; then
+    echo "Error: java binary not found after extraction" >&2
     exit 1
   fi
 
-  rm -rf "${JDK_PREFIX}"
-  mv "${JDK_DIR}" "${JDK_PREFIX}"
-  rm -rf "${STAGE}"
+  rm -f "${TB}"
 
   export JAVA_HOME="${JDK_PREFIX}"
   export PATH="${JAVA_HOME}/bin:${PATH}"
